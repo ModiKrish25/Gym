@@ -24,7 +24,7 @@ export function Programs() {
               DISCIPLINES
             </span>
           </div>
-          <h2 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
+          <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
             Curated Programs
           </h2>
         </div>
@@ -41,21 +41,21 @@ export function Programs() {
       </div>
 
       {/* Continuous Marquee Track */}
-      <div className="relative w-full py-12 md:py-16 overflow-hidden">
+      <div className="relative w-full py-8 sm:py-12 md:py-16 overflow-hidden">
         {/* Soft edge gradient fades for cinematic loop transition */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#0B0B0D] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#0B0B0D] to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-32 bg-gradient-to-r from-[#0B0B0D] to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-32 bg-gradient-to-l from-[#0B0B0D] to-transparent z-10" />
 
-        <div className="animate-programs-scroll flex gap-6 md:gap-8 items-stretch select-none pl-4">
+        <div className="animate-programs-scroll flex gap-4 sm:gap-6 md:gap-8 items-stretch select-none pl-4">
           {duplicatedPrograms.map((program, idx) => {
             const originalIndex = (idx % PROGRAMS.length) + 1;
             return (
               <div
                 key={`${program.id}-${idx}`}
-                className="w-[85vw] sm:w-[420px] md:w-[460px] lg:w-[480px] shrink-0 rounded-[4px] bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[#D4FF3F] transition-all duration-500 flex flex-col overflow-hidden group select-none shadow-xl"
+                className="w-[82vw] sm:w-[420px] md:w-[460px] lg:w-[480px] max-w-[480px] shrink-0 rounded-[4px] bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[#D4FF3F] transition-all duration-500 flex flex-col overflow-hidden group select-none shadow-xl"
               >
                 {/* Image Header with B&W high-contrast filter that turns to color on hover */}
-                <div className="relative h-64 md:h-72 w-full overflow-hidden border-b border-[rgba(237,235,228,0.08)]">
+                <div className="relative h-52 sm:h-64 md:h-72 w-full overflow-hidden border-b border-[rgba(237,235,228,0.08)]">
                   <Image
                     src={program.image}
                     alt={program.title}
@@ -85,7 +85,7 @@ export function Programs() {
                 </div>
 
                 {/* Card Body */}
-                <div className="p-7 flex-1 flex flex-col justify-between">
+                <div className="p-5 sm:p-7 flex-1 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-2.5 mb-3">
                       <div className="w-7 h-7 rounded-[2px] bg-[#0B0B0D] border border-[rgba(237,235,228,0.12)] flex items-center justify-center text-[#D4FF3F]">

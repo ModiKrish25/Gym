@@ -54,6 +54,8 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   body {
@@ -63,8 +65,13 @@
     letter-spacing: normal;
     word-spacing: normal;
     overflow-x: hidden;
+    max-width: 100vw;
     min-height: 100vh;
     line-height: 1.6;
+  }
+
+  img, video, canvas, svg {
+    max-width: 100%;
   }
 
   /* Typography: Big Shoulders Display uppercase 800 for hero & section titles */

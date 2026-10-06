@@ -87,7 +87,7 @@ export function Facilities() {
               THE FACILITY
             </span>
           </div>
-          <h2 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
+          <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
             Architected for Serious Work
           </h2>
         </div>
@@ -98,7 +98,7 @@ export function Facilities() {
             locker sanctuaries, and scientific recovery suites.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-[#8A8F98]">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 font-mono text-xs text-[#8A8F98]">
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[2px] bg-[#17181B] border border-[rgba(237,235,228,0.08)]">
               <span className="text-[#D4FF3F] font-bold">22,000</span> SQ FT
             </span>
@@ -126,7 +126,7 @@ export function Facilities() {
                 delay: 0.08 * idx,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className={`relative min-h-[380px] md:min-h-[420px] rounded-[4px] overflow-hidden bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[#D4FF3F] transition-all duration-500 flex flex-col justify-between p-6 sm:p-8 select-none group shadow-xl ${facility.colSpan}`}
+              className={`relative min-h-[340px] sm:min-h-[380px] md:min-h-[420px] rounded-[4px] overflow-hidden bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[#D4FF3F] transition-all duration-500 flex flex-col justify-between p-5 sm:p-8 select-none group shadow-xl ${facility.colSpan}`}
             >
               {/* Background Image with athletic desaturation to color bloom on hover */}
               <Image
@@ -191,7 +191,7 @@ export function Facilities() {
               delay: 0.5,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="relative min-h-[380px] md:min-h-[420px] rounded-[4px] overflow-hidden bg-gradient-to-br from-[#17181B] via-[#121316] to-[#0B0B0D] border border-[rgba(212,255,63,0.3)] hover:border-[#D4FF3F] transition-all duration-500 flex flex-col justify-between p-6 sm:p-8 select-none group shadow-xl col-span-1 md:col-span-2 lg:col-span-1"
+            className="relative min-h-[340px] sm:min-h-[380px] md:min-h-[420px] rounded-[4px] overflow-hidden bg-gradient-to-br from-[#17181B] via-[#121316] to-[#0B0B0D] border border-[rgba(212,255,63,0.3)] hover:border-[#D4FF3F] transition-all duration-500 flex flex-col justify-between p-5 sm:p-8 select-none group shadow-xl col-span-1 md:col-span-2 lg:col-span-1"
           >
             {/* Ambient volt glow */}
             <div className="pointer-events-none absolute -top-24 -right-24 w-48 h-48 bg-[#D4FF3F]/10 blur-3xl rounded-full group-hover:bg-[#D4FF3F]/20 transition-all duration-500" />

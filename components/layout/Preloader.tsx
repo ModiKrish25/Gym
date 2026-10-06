@@ -263,7 +263,7 @@ export function Preloader() {
       <button
         type="button"
         onClick={handleSkip}
-        className="absolute top-6 right-6 z-30 font-mono text-xs uppercase tracking-[0.2em] text-[#8A8F98] hover:text-[#D4FF3F] transition-colors px-3.5 py-1.5 rounded-[2px] bg-[#17181B]/90 border border-[rgba(237,235,228,0.15)] backdrop-blur-md cursor-pointer"
+        className="absolute top-4 sm:top-6 right-4 sm:right-6 z-30 font-mono text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#8A8F98] hover:text-[#D4FF3F] transition-colors px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-[2px] bg-[#17181B]/90 border border-[rgba(237,235,228,0.15)] backdrop-blur-md cursor-pointer"
       >
         SKIP [ESC]
       </button>
@@ -273,7 +273,7 @@ export function Preloader() {
         {/* Dynamic Status Eyebrow */}
         <div className="flex items-center gap-2 mb-1">
           <span className="w-2 h-2 rounded-[1px] bg-[#D4FF3F] animate-pulse" />
-          <p className="status font-mono text-xs uppercase tracking-[0.25em] text-[#8A8F98]">
+          <p className="status font-mono text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.25em] text-[#8A8F98] text-center">
             SET UP // OLYMPIC BARBELL LOADED
           </p>
         </div>
@@ -413,9 +413,9 @@ export function Preloader() {
           </div>
 
           {/* PR Achievement Badge */}
-          <div className="pr-badge opacity-0 inline-flex items-center gap-2 px-3 py-1 rounded-[2px] bg-[#D4FF3F]/15 border border-[#D4FF3F] -mt-2 mb-1">
+          <div className="pr-badge opacity-0 inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-[2px] bg-[#D4FF3F]/15 border border-[#D4FF3F] -mt-2 mb-1">
             <span className="w-1.5 h-1.5 rounded-[1px] bg-[#D4FF3F]" />
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#D4FF3F] font-bold">
+            <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#D4FF3F] font-bold text-center">
               MAX EFFORT // 100 KG PR LOCKOUT
             </span>
           </div>

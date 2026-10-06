@@ -39,15 +39,15 @@ const COMPARISON_FEATURES = [
 
 export default function PricingPage() {
   return (
-    <div className="pt-36 pb-24 md:pb-36 bg-[#0A1220] min-h-screen">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-8">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-24 md:pb-36 bg-[#0A1220] min-h-screen">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Main Pricing component */}
         <Pricing />
 
         {/* Feature Comparison Table */}
-        <section className="mt-20 pt-16 border-t border-[rgba(142,155,176,0.18)]">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs uppercase tracking-widest text-[#FF6B35] font-semibold mb-3 block">
+        <section className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t border-[rgba(142,155,176,0.18)]">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+            <span className="text-xs uppercase tracking-widest text-[#FF6B35] font-semibold mb-2 sm:mb-3 block">
               Direct Comparison
             </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[#F5F6F8]">
@@ -58,7 +58,7 @@ export default function PricingPage() {
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.2)] p-6 sm:p-8">
+          <div className="overflow-x-auto rounded-2xl sm:rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.2)] p-4 sm:p-8">
             <table className="w-full text-left border-collapse min-w-[640px]">
               <thead>
                 <tr className="border-b border-[rgba(142,155,176,0.18)]">

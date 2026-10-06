@@ -7,6 +7,7 @@ import { useBarbellSpine, SPINE_SECTIONS } from "@/hooks/useBarbellSpine";
 export function BarbellSpine() {
   const { currentStageIndex, platesCount, weight, repLabel } = useBarbellSpine();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   // SVG Barbell plate rendering for 0 to 7 plates per side
   const plateHeights = [44, 42, 40, 36, 32, 28, 24]; // inner (biggest) to outer (smallest)
@@ -21,10 +22,29 @@ export function BarbellSpine() {
   return (
     <aside
       aria-label="Barbell Spine Navigator"
-      className="fixed right-4 md:right-8 bottom-6 z-40 select-none"
+      className="fixed right-3 sm:right-4 md:right-8 bottom-4 sm:bottom-6 z-40 select-none max-w-[calc(100vw-24px)]"
     >
-      {/* Main Barbell HUD Card */}
-      <div className="rounded-[4px] bg-[#17181B]/95 border border-[rgba(237,235,228,0.12)] p-3 md:p-4 shadow-2xl backdrop-blur-md flex flex-col gap-3 min-w-[260px] md:min-w-[300px]">
+      {/* Mobile-only Compact HUD Pill (prevents screen obstruction) */}
+      {!mobileOpen && (
+        <button
+          type="button"
+          onClick={() => setMobileOpen(true)}
+          className="md:hidden flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#17181B]/95 border border-[#D4FF3F]/30 shadow-2xl backdrop-blur-md font-mono text-xs text-[#EDEBE4] focus:outline-none"
+          aria-label="Open Barbell HUD"
+        >
+          <span className="w-1.5 h-1.5 rounded-[1px] bg-[#D4FF3F] animate-pulse" />
+          <span className="font-extrabold text-[#D4FF3F]">{weight} KG</span>
+          <span className="text-[#8A8F98] text-[10px]">•</span>
+          <span className="text-[10px] text-[#8A8F98]">{repLabel}</span>
+        </button>
+      )}
+
+      {/* Main Barbell HUD Card (Visible on desktop or when expanded on mobile) */}
+      <div
+        className={`rounded-[4px] bg-[#17181B]/95 border border-[rgba(237,235,228,0.12)] p-3 md:p-4 shadow-2xl backdrop-blur-md flex-col gap-3 w-[270px] sm:w-[280px] md:w-[300px] max-w-[calc(100vw-24px)] ${
+          mobileOpen ? "flex" : "hidden md:flex"
+        }`}
+      >
         {/* Top Header: Current Rep & Status */}
         <div className="flex items-center justify-between border-b border-[rgba(237,235,228,0.08)] pb-2.5">
           <div className="flex items-center gap-2">
@@ -34,7 +54,7 @@ export function BarbellSpine() {
             </span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <span className="font-mono text-xs font-bold text-[#D4FF3F]">
               {repLabel}
             </span>
@@ -43,6 +63,14 @@ export function BarbellSpine() {
               className="text-[10px] font-mono uppercase text-[#8A8F98] hover:text-[#EDEBE4] px-1.5 py-0.5 rounded-[2px] bg-[#0B0B0D] border border-[rgba(237,235,228,0.1)] transition-colors"
             >
               {isExpanded ? "MIN" : "TRACK"}
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              className="md:hidden text-[10px] font-mono text-[#8A8F98] hover:text-[#EDEBE4] px-1.5 py-0.5 rounded-[2px] bg-[#0B0B0D] border border-[rgba(237,235,228,0.1)] transition-colors"
+              aria-label="Close HUD"
+            >
+              ✕
             </button>
           </div>
         </div>

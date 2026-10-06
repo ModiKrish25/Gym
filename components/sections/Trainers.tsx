@@ -21,7 +21,7 @@ export function Trainers() {
                 ELITE CADRE
               </span>
             </div>
-            <h2 className="font-display text-5xl sm:text-6xl md:text-7xl font-extrabold uppercase text-[#EDEBE4]">
+            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold uppercase text-[#EDEBE4]">
               World-Class Coaches
             </h2>
           </div>
@@ -50,7 +50,7 @@ export function Trainers() {
                 delay: 0.08 * idx,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="group relative h-[480px] rounded-[4px] overflow-hidden bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[#D4FF3F] transition-all duration-300"
+              className="group relative h-[420px] sm:h-[460px] md:h-[480px] rounded-[4px] overflow-hidden bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[#D4FF3F] transition-all duration-300"
             >
               {/* Photo: High contrast B&W, color on hover */}
               <Image

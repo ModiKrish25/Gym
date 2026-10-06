@@ -17,15 +17,15 @@ export function Faq() {
       id="faq"
       className="py-24 md:py-36 bg-[#0A1220] border-b border-[rgba(142,155,176,0.18)]"
     >
-      <div className="max-w-[900px] mx-auto px-6 md:px-8">
-        <div className="text-center mb-16">
+      <div className="max-w-[900px] mx-auto px-4 sm:px-6 md:px-8">
+        <div className="text-center mb-12 sm:mb-16">
           <span className="text-xs uppercase tracking-widest text-[#FF6B35] font-semibold mb-3 block">
             Clarity & Answers
           </span>
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#F5F6F8] mb-4">
+          <h2 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold text-[#F5F6F8] mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm sm:text-base text-[#8E9BB0]">
+          <p className="text-xs sm:text-base text-[#8E9BB0]">
             Everything you need to know about membership, facilities, and protocols.
           </p>
         </div>
@@ -38,15 +38,15 @@ export function Faq() {
             return (
               <div
                 key={idx}
-                className="rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.18)] hover:border-[#FF6B35]/40 transition-colors overflow-hidden"
+                className="rounded-2xl sm:rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.18)] hover:border-[#FF6B35]/40 transition-colors overflow-hidden"
               >
                 <button
                   type="button"
                   onClick={() => toggle(idx)}
-                  className="w-full p-6 sm:p-7 text-left flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]"
+                  className="w-full p-5 sm:p-7 text-left flex items-center justify-between gap-3 sm:gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-heading text-lg sm:text-xl font-bold text-[#F5F6F8]">
+                  <span className="font-heading text-base sm:text-xl font-bold text-[#F5F6F8]">
                     {faq.question}
                   </span>
                   <div

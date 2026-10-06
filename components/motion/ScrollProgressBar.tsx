@@ -25,7 +25,7 @@ export function ScrollProgressBar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 h-7 z-[99] pointer-events-none select-none overflow-visible"
+      className="fixed top-0 left-0 right-0 h-7 z-[99] pointer-events-none select-none overflow-x-clip"
       aria-hidden="true"
     >
       {/* Barbell sleeve track */}

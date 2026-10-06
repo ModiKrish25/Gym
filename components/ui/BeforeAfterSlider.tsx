@@ -62,21 +62,19 @@ export function BeforeAfterSlider({
         </span>
       </div>
 
-      {/* Before Image (Clipped) */}
+      {/* Before Image (Clipped with pixel-perfect responsive alignment) */}
       <div
-        className="absolute inset-0 overflow-hidden"
-        style={{ width: `${sliderPosition}%` }}
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+        style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
-        <div className="absolute inset-0 w-[100cqw] sm:w-[580px] lg:w-[600px] h-full">
-          <Image
-            src={beforeImage}
-            alt="Before transformation"
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover object-center filter grayscale"
-          />
-          <div className="absolute inset-0 bg-[#0A1220]/40" />
-        </div>
+        <Image
+          src={beforeImage}
+          alt="Before transformation"
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover object-center filter grayscale"
+        />
+        <div className="absolute inset-0 bg-[#0A1220]/40" />
         <span className="absolute top-4 left-4 z-10 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#121C30]/90 border border-[rgba(142,155,176,0.3)] text-[#F5F6F8]">
           {beforeLabel}
         </span>

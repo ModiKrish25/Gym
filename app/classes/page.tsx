@@ -34,26 +34,26 @@ export default function ClassesPage() {
   };
 
   return (
-    <div className="pt-36 pb-24 md:pb-36 bg-[#0A1220] min-h-screen">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-8">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-24 md:pb-36 bg-[#0A1220] min-h-screen">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Header */}
-        <div className="max-w-2xl mb-12">
-          <span className="text-xs uppercase tracking-widest text-[#FF6B35] font-semibold mb-3 block">
+        <div className="max-w-2xl mb-8 sm:mb-12">
+          <span className="text-xs uppercase tracking-widest text-[#FF6B35] font-semibold mb-2 sm:mb-3 block">
             Class Directory
           </span>
-          <h1 className="font-heading text-4xl sm:text-6xl font-bold text-[#F5F6F8] mb-4">
+          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold text-[#F5F6F8] mb-3 sm:mb-4">
             Curated Group Sessions
           </h1>
-          <p className="text-base text-[#8E9BB0] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#8E9BB0] leading-relaxed">
             High-density coaching with small squad capacities. Filter by day or intensity
             to find your training cadence.
           </p>
         </div>
 
         {/* Filter Toolbar */}
-        <div className="p-6 rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.18)] mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.18)] mb-8 sm:mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
           {/* Day Filter */}
-          <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
             <span className="text-xs font-semibold text-[#8E9BB0] uppercase tracking-wider flex items-center gap-1.5 mr-2 shrink-0">
               <Filter size={14} className="text-[#FF6B35]" />
               <span>Day:</span>
@@ -84,8 +84,8 @@ export default function ClassesPage() {
           </div>
 
           {/* Intensity Filter */}
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs font-semibold text-[#8E9BB0] uppercase tracking-wider mr-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <span className="text-xs font-semibold text-[#8E9BB0] uppercase tracking-wider mr-1 sm:mr-2">
               Intensity:
             </span>
             {["All", "Low", "Medium", "High"].map((level) => (
@@ -117,7 +117,7 @@ export default function ClassesPage() {
         {/* Grid of Classes */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           <AnimatePresence>
             {filteredClasses.map((cls) => {
@@ -131,7 +131,7 @@ export default function ClassesPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="p-7 rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.18)] hover:border-[#FF6B35]/40 transition-all flex flex-col justify-between group"
+                  className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.18)] hover:border-[#FF6B35]/40 transition-all flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-3 mb-4">

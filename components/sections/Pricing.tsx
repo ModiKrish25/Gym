@@ -134,16 +134,16 @@ export function Pricing() {
                 MEMBERSHIP TIERS
               </span>
             </div>
-            <h2 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
+            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
               Plate Stacks
             </h2>
           </div>
 
           {/* Monthly / Yearly Toggle (Sharp corners, hairline borders) */}
-          <div className="inline-flex items-center gap-2 p-1 rounded-[2px] bg-[#17181B] border border-[rgba(237,235,228,0.12)]">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 p-1 rounded-[2px] bg-[#17181B] border border-[rgba(237,235,228,0.12)]">
             <button
               onClick={() => setIsYearly(false)}
-              className={`px-5 py-2 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 ${
+              className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 ${
                 !isYearly
                   ? "bg-[#D4FF3F] text-[#0B0B0D]"
                   : "text-[#8A8F98] hover:text-[#EDEBE4]"
@@ -153,7 +153,7 @@ export function Pricing() {
             </button>
             <button
               onClick={() => setIsYearly(true)}
-              className={`px-5 py-2 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 flex items-center gap-2 ${
+              className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 flex items-center gap-1.5 sm:gap-2 ${
                 isYearly
                   ? "bg-[#D4FF3F] text-[#0B0B0D]"
                   : "text-[#8A8F98] hover:text-[#EDEBE4]"
@@ -178,7 +178,7 @@ export function Pricing() {
             return (
               <div
                 key={plan.id}
-                className={`relative rounded-[4px] p-7 md:p-8 flex flex-col justify-between transition-all duration-300 group ${
+                className={`relative rounded-[4px] p-5 sm:p-7 md:p-8 flex flex-col justify-between transition-all duration-300 group ${
                   plan.popular
                     ? "bg-[#17181B] border-2 border-[#D4FF3F] shadow-[0_0_30px_rgba(212,255,63,0.1)] lg:-translate-y-2"
                     : "bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[rgba(237,235,228,0.25)]"
@@ -186,7 +186,7 @@ export function Pricing() {
               >
                 {/* Popular Badge */}
                 {plan.popular && (
-                  <div className="absolute -top-3.5 right-6 px-3 py-1 rounded-[2px] bg-[#D4FF3F] text-[#0B0B0D] font-mono text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-md">
+                  <div className="absolute -top-3.5 right-4 sm:right-6 px-3 py-1 rounded-[2px] bg-[#D4FF3F] text-[#0B0B0D] font-mono text-[10px] font-bold uppercase tracking-widest flex items-center gap-1.5 shadow-md">
                     <Sparkles size={11} />
                     <span>RECOMMENDED SPEC</span>
                   </div>
@@ -200,13 +200,13 @@ export function Pricing() {
                     <div className="font-mono text-xs uppercase tracking-widest text-[#8A8F98] mb-1">
                       TIER 0{plateCount}
                     </div>
-                    <h3 className="font-display text-3xl font-extrabold uppercase text-[#EDEBE4]">
+                    <h3 className="font-display text-2xl sm:text-3xl font-extrabold uppercase text-[#EDEBE4]">
                       {plan.name}
                     </h3>
 
                     <div className="mt-4 flex items-baseline gap-1">
                       <span className="font-mono text-base font-semibold text-[#8A8F98]">₹</span>
-                      <span className="font-mono text-4xl sm:text-5xl font-extrabold text-[#EDEBE4] group-hover:text-[#D4FF3F] transition-colors tabular-nums">
+                      <span className="font-mono text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#EDEBE4] group-hover:text-[#D4FF3F] transition-colors tabular-nums">
                         {price.toLocaleString()}
                       </span>
                       <span className="font-mono text-xs text-[#8A8F98]">{cadence}</span>

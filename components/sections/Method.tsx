@@ -50,7 +50,7 @@ export function Method() {
               </span>
             </div>
 
-            <h2 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight mb-6">
+            <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight mb-6">
               Four steps. One system.
             </h2>
 
@@ -60,7 +60,7 @@ export function Method() {
             </p>
 
             {/* Current Sequence Card in Iron and Volt */}
-            <div className="p-6 rounded-[4px] bg-[#17181B] border border-[rgba(237,235,228,0.08)]">
+            <div className="p-5 sm:p-6 rounded-[4px] bg-[#17181B] border border-[rgba(237,235,228,0.08)]">
               <div className="flex items-center justify-between mb-2">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-[#8A8F98]">
                   CURRENT SEQUENCE
@@ -70,7 +70,7 @@ export function Method() {
                 </span>
               </div>
 
-              <p className="font-display text-3xl font-extrabold uppercase text-[#EDEBE4] tracking-tight">
+              <p className="font-display text-2xl sm:text-3xl font-extrabold uppercase text-[#EDEBE4] tracking-tight">
                 {METHOD_STEPS[activeStep - 1]?.title}
               </p>
               <p className="font-body text-xs sm:text-sm text-[#8A8F98] mt-2 leading-relaxed">
@@ -80,14 +80,14 @@ export function Method() {
           </div>
 
           {/* Right Column: Interactive Vertical Step List with Volt Progress Line (7 cols) */}
-          <div className="lg:col-span-7 relative pl-8 sm:pl-12">
-            {/* Background Track Line */}
-            <div className="absolute left-3 sm:left-4 top-4 bottom-4 w-[2px] bg-[#17181B] border-r border-[rgba(237,235,228,0.08)]" />
+          <div className="lg:col-span-7 relative pl-10 sm:pl-12">
+            {/* Background Track Line aligned with node center */}
+            <div className="absolute left-[11px] top-6 bottom-6 w-[2px] bg-[#17181B] border-r border-[rgba(237,235,228,0.08)]" />
 
             {/* Volt Progress Line (Animated on scroll) */}
             <motion.div
               style={{ height: lineHeight }}
-              className="absolute left-3 sm:left-4 top-4 w-[2px] bg-[#D4FF3F] shadow-[0_0_12px_rgba(212,255,63,0.8)] origin-top z-10"
+              className="absolute left-[11px] top-6 w-[2px] bg-[#D4FF3F] shadow-[0_0_12px_rgba(212,255,63,0.8)] origin-top z-10"
             />
 
             {/* Steps Cards */}
@@ -100,7 +100,7 @@ export function Method() {
                   <div
                     key={step.step}
                     onClick={() => setActiveStep(step.step)}
-                    className={`relative p-6 sm:p-8 rounded-[4px] transition-all duration-400 cursor-pointer group ${
+                    className={`relative p-5 sm:p-8 rounded-[4px] transition-all duration-400 cursor-pointer group ${
                       isActive
                         ? "bg-[#17181B] border border-[#D4FF3F] shadow-[0_0_25px_rgba(212,255,63,0.08)]"
                         : "bg-[#17181B]/50 border border-[rgba(237,235,228,0.08)] opacity-60 hover:opacity-100 hover:border-[rgba(237,235,228,0.2)]"
@@ -108,7 +108,7 @@ export function Method() {
                   >
                     {/* Step Node Marker on Line */}
                     <div
-                      className={`absolute -left-8 sm:-left-12 top-8 w-6 h-6 rounded-[2px] flex items-center justify-center font-mono font-bold text-xs transition-all duration-300 z-20 ${
+                      className={`absolute -left-10 sm:-left-12 top-6 sm:top-8 w-6 h-6 rounded-[2px] flex items-center justify-center font-mono font-bold text-xs transition-all duration-300 z-20 ${
                         isPassed
                           ? "bg-[#D4FF3F] text-[#0B0B0D] shadow-[0_0_10px_rgba(212,255,63,0.6)]"
                           : "bg-[#17181B] border border-[rgba(237,235,228,0.2)] text-[#8A8F98]"

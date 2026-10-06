@@ -186,7 +186,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
-            className="fixed inset-0 z-40 bg-[#0B0B0D]/98 backdrop-blur-2xl pt-24 px-6 pb-28 flex flex-col justify-between md:hidden"
+            className="fixed inset-0 z-40 bg-[#0B0B0D]/98 backdrop-blur-2xl pt-20 sm:pt-24 px-5 sm:px-6 pb-32 flex flex-col justify-between md:hidden overflow-y-auto"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile Navigation"

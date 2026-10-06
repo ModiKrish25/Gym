@@ -92,7 +92,7 @@ export function BookModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative w-full max-w-lg rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.25)] p-6 sm:p-8 shadow-2xl z-10"
+            className="relative w-full max-w-lg rounded-2xl sm:rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.25)] p-5 sm:p-8 shadow-2xl z-10 max-h-[90vh] overflow-y-auto my-auto"
             role="dialog"
             aria-modal="true"
             aria-labelledby="book-modal-title"

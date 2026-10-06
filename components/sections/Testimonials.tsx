@@ -123,7 +123,7 @@ export function Testimonials() {
                 VOICES FROM THE FLOOR
               </span>
             </div>
-            <h2 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
+            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
               Athlete Verified
             </h2>
           </div>
@@ -136,14 +136,14 @@ export function Testimonials() {
         </div>
       </div>
 
-      {/* Full Screen 3D Perspective Marquee Stage */}
-      <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[680px] md:h-[780px] lg:h-[840px] flex items-center justify-center overflow-hidden [perspective:700px] md:[perspective:900px] lg:[perspective:1100px]">
+      {/* Responsive 3D Perspective Marquee Stage (bound to full width without window scrollbars) */}
+      <div className="relative w-full max-w-full h-[520px] sm:h-[680px] md:h-[780px] lg:h-[840px] flex items-center justify-center overflow-hidden [perspective:700px] md:[perspective:900px] lg:[perspective:1100px]">
         {/* Angled 3D Isometric Wall */}
         <div
-          className="flex flex-row items-center gap-5 sm:gap-6 scale-105 md:scale-110 lg:scale-120"
+          className="flex flex-row items-center gap-3 sm:gap-5 md:gap-6 scale-95 sm:scale-105 md:scale-110 lg:scale-120"
           style={{
             transform:
-              "translateX(20px) translateY(0px) translateZ(-60px) rotateX(20deg) rotateY(-12deg) rotateZ(16deg)",
+              "translateX(10px) translateY(0px) translateZ(-40px) rotateX(18deg) rotateY(-10deg) rotateZ(14deg)",
             transformStyle: "preserve-3d",
           }}
         >
@@ -188,54 +188,54 @@ export function Testimonials() {
             ))}
           </Marquee>
 
-          {/* Column 4: Bottom to Top */}
+          {/* Column 4: Bottom to Top (Hidden on small mobile) */}
           <Marquee
             vertical
             pauseOnHover
             repeat={4}
             style={{ ["--duration" as any]: "44s" }}
-            className="[--duration:44s]"
+            className="[--duration:44s] hidden sm:flex"
           >
             {col4.map((review, idx) => (
               <TestimonialCard key={`c4-${review.username}-${idx}`} {...review} />
             ))}
           </Marquee>
 
-          {/* Column 5: Top to Bottom */}
+          {/* Column 5: Top to Bottom (Hidden on mobile) */}
           <Marquee
             vertical
             reverse
             pauseOnHover
             repeat={4}
             style={{ ["--duration" as any]: "30s" }}
-            className="[--duration:30s]"
+            className="[--duration:30s] hidden md:flex"
           >
             {col5.map((review, idx) => (
               <TestimonialCard key={`c5-${review.username}-${idx}`} {...review} />
             ))}
           </Marquee>
 
-          {/* Column 6: Bottom to Top */}
+          {/* Column 6: Bottom to Top (Hidden on tablet and below) */}
           <Marquee
             vertical
             pauseOnHover
             repeat={4}
             style={{ ["--duration" as any]: "38s" }}
-            className="[--duration:38s]"
+            className="[--duration:38s] hidden lg:flex"
           >
             {col6.map((review, idx) => (
               <TestimonialCard key={`c6-${review.username}-${idx}`} {...review} />
             ))}
           </Marquee>
 
-          {/* Column 7: Top to Bottom */}
+          {/* Column 7: Top to Bottom (Hidden on small laptop and below) */}
           <Marquee
             vertical
             reverse
             pauseOnHover
             repeat={4}
             style={{ ["--duration" as any]: "34s" }}
-            className="[--duration:34s]"
+            className="[--duration:34s] hidden xl:flex"
           >
             {col7.map((review, idx) => (
               <TestimonialCard key={`c7-${review.username}-${idx}`} {...review} />

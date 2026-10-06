@@ -11,14 +11,14 @@ export default function TrainersPage() {
   const [selectedTrainer, setSelectedTrainer] = useState<Trainer | null>(null);
 
   return (
-    <div className="pt-36 pb-24 md:pb-36 bg-[#0B0B0D] min-h-screen">
-      <div className="max-w-[1340px] mx-auto px-6 md:px-8">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-24 md:pb-36 bg-[#0B0B0D] min-h-screen">
+      <div className="max-w-[1340px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Header */}
-        <div className="max-w-2xl mb-16">
+        <div className="max-w-2xl mb-12 sm:mb-16">
           <span className="font-mono text-xs uppercase tracking-widest text-[#D4FF3F] font-bold mb-3 block">
             // Coaching Faculty
           </span>
-          <h1 className="font-display text-5xl sm:text-7xl font-extrabold text-[#EDEBE4] mb-4">
+          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold text-[#EDEBE4] mb-4">
             Master Coaches
           </h1>
           <p className="text-base text-[#8A8F98] leading-relaxed">

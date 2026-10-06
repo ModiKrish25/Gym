@@ -33,7 +33,7 @@ export function Schedule() {
                 TIMETABLE
               </span>
             </div>
-            <h2 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
+            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
               Class Schedule
             </h2>
           </div>
@@ -45,15 +45,15 @@ export function Schedule() {
           </div>
         </div>
 
-        {/* Days Filter Strip (Sharp corners, hairline borders) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 no-scrollbar">
+        {/* Days Filter Strip (Sharp corners, hairline borders, horizontal swipe on mobile) */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 sm:mb-8 no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
           {DAYS_OF_WEEK.map((day) => {
             const isActive = activeDay === day.key;
             return (
               <button
                 key={day.key}
                 onClick={() => setActiveDay(day.key)}
-                className={`relative px-5 py-2.5 rounded-[2px] font-mono text-xs uppercase tracking-wider transition-all duration-200 shrink-0 border focus:outline-none ${
+                className={`relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-[2px] font-mono text-xs uppercase tracking-wider transition-all duration-200 shrink-0 border focus:outline-none ${
                   isActive
                     ? "bg-[#D4FF3F] text-[#0B0B0D] border-[#D4FF3F] font-bold shadow-[0_0_12px_rgba(212,255,63,0.3)]"
                     : "bg-[#17181B] text-[#8A8F98] border-[rgba(237,235,228,0.08)] hover:text-[#EDEBE4] hover:border-[#EDEBE4]/40"
@@ -88,11 +88,11 @@ export function Schedule() {
               {currentClasses.map((cls, idx) => (
                 <div
                   key={`${activeDay}-${cls.time}-${idx}`}
-                  className="grid grid-cols-1 lg:grid-cols-12 px-6 sm:px-8 py-6 items-center gap-4 lg:gap-6 hover:bg-[#222429]/60 transition-colors duration-200 group"
+                  className="grid grid-cols-1 lg:grid-cols-12 px-4 sm:px-8 py-5 sm:py-6 items-center gap-3 lg:gap-6 hover:bg-[#222429]/60 transition-colors duration-200 group"
                 >
                   {/* Column 1: Large Time Numeral in JetBrains Mono */}
                   <div className="lg:col-span-3 flex items-baseline gap-2">
-                    <span className="font-mono text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#EDEBE4] group-hover:text-[#D4FF3F] transition-colors tabular-nums">
+                    <span className="font-mono text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#EDEBE4] group-hover:text-[#D4FF3F] transition-colors tabular-nums">
                       {cls.time}
                     </span>
                     <span className="font-mono text-xs text-[#8A8F98] uppercase">
@@ -102,7 +102,7 @@ export function Schedule() {
 
                   {/* Column 2: Class Discipline */}
                   <div className="lg:col-span-4">
-                    <h3 className="font-display text-2xl sm:text-3xl font-extrabold uppercase text-[#EDEBE4] group-hover:text-[#D4FF3F] transition-colors">
+                    <h3 className="font-display text-xl sm:text-3xl font-extrabold uppercase text-[#EDEBE4] group-hover:text-[#D4FF3F] transition-colors">
                       {cls.name}
                     </h3>
                     <p className="font-mono text-xs text-[#8A8F98] mt-0.5">
@@ -137,12 +137,13 @@ export function Schedule() {
                   </div>
 
                   {/* Column 5: Book CTA */}
-                  <div className="lg:col-span-1 flex lg:justify-end">
+                  <div className="lg:col-span-1 flex lg:justify-end pt-2 lg:pt-0">
                     <button
                       onClick={() => handleBook(cls)}
-                      className="w-full lg:w-9 h-9 rounded-[2px] bg-[#0B0B0D] border border-[rgba(237,235,228,0.15)] flex items-center justify-center text-[#EDEBE4] group-hover:bg-[#D4FF3F] group-hover:text-[#0B0B0D] group-hover:border-[#D4FF3F] transition-all duration-300 font-mono text-xs uppercase"
+                      className="w-full lg:w-9 h-10 lg:h-9 rounded-[2px] bg-[#0B0B0D] border border-[rgba(237,235,228,0.15)] flex items-center justify-center gap-2 text-[#EDEBE4] group-hover:bg-[#D4FF3F] group-hover:text-[#0B0B0D] group-hover:border-[#D4FF3F] transition-all duration-300 font-mono text-xs uppercase"
                       aria-label={`Book ${cls.name} at ${cls.time}`}
                     >
+                      <span className="lg:hidden font-mono font-bold text-xs uppercase tracking-wider">Book Session</span>
                       <ArrowUpRight size={16} />
                     </button>
                   </div>

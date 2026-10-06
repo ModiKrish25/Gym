@@ -95,7 +95,7 @@ export function FacilityZones() {
                 Interactive Ground Spaces
               </span>
             </div>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-[#F5F6F8] tracking-tight">
+            <h2 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold text-[#F5F6F8] tracking-tight">
               Four Zones. Zero Compromise.
             </h2>
           </div>
@@ -132,7 +132,7 @@ export function FacilityZones() {
                   key={zone.id}
                   onMouseEnter={() => !revealAll && setHoveredId(zone.id)}
                   onClick={() => setHoveredId(zone.id)}
-                  className="group relative h-[480px] sm:h-[540px] lg:h-[620px] rounded-xl md:rounded-2xl overflow-hidden border border-black/80 cursor-pointer select-none transition-all duration-500"
+                  className="group relative h-[380px] sm:h-[480px] lg:h-[620px] rounded-xl md:rounded-2xl overflow-hidden border border-black/80 cursor-pointer select-none transition-all duration-500"
                 >
                   {/* BASE LAYER: Birch Plywood Texture */}
                   <div className="absolute inset-0 z-0">
@@ -168,7 +168,7 @@ export function FacilityZones() {
                   </div>
 
                   {/* CONTENT OVERLAY */}
-                  <div className="relative z-20 h-full flex flex-col justify-between p-6 sm:p-7 md:p-8">
+                  <div className="relative z-20 h-full flex flex-col justify-between p-4 sm:p-7 md:p-8">
                     {/* TOP: Bold Condensed Uppercase Header */}
                     <div>
                       {/* Top Zone Indicator */}
@@ -194,7 +194,7 @@ export function FacilityZones() {
 
                       {/* Main Title (Bebas Neue / Ultra Condensed uppercase) */}
                       <h3
-                        className={`font-bebas text-5xl sm:text-5xl lg:text-6xl tracking-tight uppercase leading-[0.92] transition-colors duration-300 ${
+                        className={`font-bebas text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase leading-[0.92] transition-colors duration-300 ${
                           isRevealed
                             ? "text-[#FFFFFF] drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]"
                             : "text-[#050505]"

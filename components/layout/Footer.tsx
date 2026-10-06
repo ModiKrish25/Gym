@@ -179,13 +179,13 @@ export function Footer() {
         </div>
 
         {/* Bottom border & copyright */}
-        <div className="pt-8 border-t border-[rgba(237,235,228,0.08)] flex flex-col md:flex-row items-center justify-between text-xs font-mono text-[#8A8F98] gap-4">
+        <div className="pt-8 border-t border-[rgba(237,235,228,0.08)] flex flex-col md:flex-row items-center justify-between text-xs font-mono text-[#8A8F98] gap-4 text-center md:text-left">
           <p>© 2026 GYM Elite Fitness Club. All rights reserved.</p>
-          <p className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-2 sm:gap-4 text-center md:text-right">
             <span>{BRAND.address}</span>
-            <span>•</span>
+            <span className="hidden sm:inline">•</span>
             <span className="text-[#D4FF3F]">{BRAND.phone}</span>
-          </p>
+          </div>
         </div>
       </div>
     </footer>

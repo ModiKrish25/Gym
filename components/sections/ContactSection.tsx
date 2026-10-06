@@ -55,14 +55,14 @@ export function ContactSection() {
       id="contact"
       className="py-24 md:py-36 bg-[#0A1220] border-b border-[rgba(142,155,176,0.18)]"
     >
-      <div className="max-w-[1280px] mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Details & Map Placeholder (5 cols) */}
           <div className="lg:col-span-5">
             <span className="text-xs uppercase tracking-widest text-[#FF6B35] font-semibold mb-3 block">
               Direct Contact
             </span>
-            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-[#F5F6F8] mb-6">
+            <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[#F5F6F8] mb-6">
               Step Into the Club
             </h2>
             <p className="text-base text-[#8E9BB0] leading-relaxed mb-10">
@@ -140,7 +140,7 @@ export function ContactSection() {
           </div>
 
           {/* Form (7 cols) */}
-          <div className="lg:col-span-7 p-8 sm:p-12 rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.2)] shadow-2xl">
+          <div className="lg:col-span-7 p-5 sm:p-8 md:p-12 rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.2)] shadow-2xl">
             {successMessage ? (
               <div className="py-12 text-center">
                 <div className="w-16 h-16 rounded-full bg-[#FF6B35]/20 border border-[#FF6B35] flex items-center justify-center text-[#FF6B35] mx-auto mb-5">
