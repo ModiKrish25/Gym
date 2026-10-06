@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Art Direction Palette */
+  --color-bg: #0B0B0D;
+  --color-iron: #17181B;
+  --color-iron-light: #222429;
+  --color-line: #2A2C31;
+  --color-chalk: #EDEBE4;
+  --color-muted: #8A8F98;
+  --color-volt: #D4FF3F;
+  --color-volt-hover: #BEE62F;
+  --color-hairline: rgba(237, 235, 228, 0.08);
+
+  /* Single Easing across the entire site */
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
+  /* shadcn color tokens */
+  --background: #0B0B0D;
+  --foreground: #EDEBE4;
+  --card: #17181B;
+  --card-foreground: #EDEBE4;
+  --popover: #17181B;
+  --popover-foreground: #EDEBE4;
+  --primary: #D4FF3F;
+  --primary-foreground: #0B0B0D;
+  --secondary: #17181B;
+  --secondary-foreground: #EDEBE4;
+  --muted: #222429;
+  --muted-foreground: #8A8F98;
+  --border: rgba(237, 235, 228, 0.1);
+
+  /* Legacy mappings */
+  --color-surface: #17181B;
+  --color-text: #EDEBE4;
+  --bg-navy: #0B0B0D;
+  --surface-card: #17181B;
+  --accent-ember: #D4FF3F;
+  --border-line: #2A2C31;
+}
+
+@layer base {
+  *, *::before, *::after {
+    border-color: var(--color-line);
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-chalk);
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-chalk);
+    font-family: var(--font-body), "Manrope", system-ui, sans-serif;
+    letter-spacing: normal;
+    word-spacing: normal;
+    overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* Typography: Big Shoulders Display uppercase 800 for hero & section titles */
+  h1, h2, h3, h4, .font-display, .font-heading {
+    font-family: var(--font-display), "Big Shoulders Display", Impact, sans-serif;
+    text-transform: uppercase;
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+  }
+
+  /* Manrope body at normal tracking */
+  p, span, li, button, input, textarea, .font-body {
+    font-family: var(--font-body), "Manrope", sans-serif;
+    letter-spacing: normal;
+  }
+
+  /* JetBrains Mono strictly for numbers & technical metadata */
+  .font-mono, [data-mono], .mono-num {
+    font-family: var(--font-mono), "JetBrains Mono", monospace;
+    letter-spacing: -0.01em;
+    font-feature-settings: "tnum" on, "lnum" on;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-volt) !important;
+    outline-offset: 3px !important;
+  }
+
+  ::selection {
+    background-color: var(--color-volt);
+    color: var(--color-bg);
+  }
+}
+
+/* Hairline Grid & Architectural Elements */
+.hairline-border {
+  border-width: 1px;
+  border-color: var(--color-hairline);
+}
+
+.hairline-border-iron {
+  border-width: 1px;
+  border-color: var(--color-line);
+}
+
+.hairline-grid-bg {
+  background-image: linear-gradient(to right, rgba(237, 235, 228, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(237, 235, 228, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Cropped Viewport-Edge Big Shoulders Display Titles */
+.title-crop-viewport {
+  font-family: var(--font-display), "Big Shoulders Display", Impact, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(3.5rem, 15vw, 18vw);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  user-select: none;
+  color: var(--color-chalk);
+}
+
+/* Outlined typography */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-line);
+  transition: -webkit-text-stroke 0.4s var(--ease-expo);
+}
+
+.group:hover .text-outline,
+.text-outline-active {
+  -webkit-text-stroke: 1.5px var(--color-volt);
+}
+
+/* B&W High-Contrast Photography that turns to color on hover */
+.img-athletic, .img-awwwards-bw {
+  filter: grayscale(100%) contrast(125%) brightness(0.92);
+  transition: filter 0.8s var(--ease-expo), transform 0.8s var(--ease-expo);
+}
+
+.img-athletic:hover,
+.group:hover .img-athletic,
+.img-awwwards-bw:hover,
+.group:hover .img-awwwards-bw {
+  filter: grayscale(0%) contrast(105%) brightness(1);
+}
+
+/* Single Easing across all site micro-interactions */
+.transition-expo {
+  transition-timing-function: var(--ease-expo) !important;
+}
+
+/* Primary Button - Volt Accent (Accent only on CTAs, marquee and key numbers) */
+.btn-volt {
+  background-color: var(--color-volt);
+  color: var(--color-bg);
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: background-color 0.3s var(--ease-expo), transform 0.3s var(--ease-expo), box-shadow 0.3s var(--ease-expo);
+}
+
+.btn-volt:hover {
+  background-color: var(--color-volt-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(212, 255, 63, 0.3);
+}
+
+.btn-volt:active {
+  transform: translateY(0);
+}
+
+/* Subtle architectural crosshair mark */
+.crosshair-corner::before {
+  content: "+";
+  position: absolute;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  color: var(--color-muted);
+  opacity: 0.5;
+}
+
+/* Industrial custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2C31;
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-volt);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2A2C31 var(--color-bg);
+}
+
+
+/* 3D Testimonials Marquee Animations */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+/* Explicit Infinite Bottom-to-Top (Upward) Animation */
+@keyframes marquee-down-to-top {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(-100% - var(--gap, 1rem)));
+  }
+}
+
+/* Explicit Infinite Top-to-Bottom (Downward) Animation */
+@keyframes marquee-top-to-down {
+  0% {
+    transform: translateY(calc(-100% - var(--gap, 1rem)));
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-up {
+  animation: marquee-down-to-top var(--duration, 40s) linear infinite !important;
+  will-change: transform;
+}
+
+.animate-marquee-down {
+  animation: marquee-top-to-down var(--duration, 40s) linear infinite !important;
+  will-change: transform;
+}
+
+.group:hover .group-hover\:\[animation-play-state\:paused\],
+.animate-marquee-up:hover,
+.animate-marquee-down:hover {
+  animation-play-state: paused !important;
+}
+
+/* Continuous Programs Horizontal Scroll */
+@keyframes programs-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-programs-scroll {
+  display: flex;
+  width: max-content;
+  animation: programs-scroll 45s linear infinite;
+  will-change: transform;
+}
+
+.animate-programs-scroll:hover {
+  animation-play-state: paused;
+}
+
+
