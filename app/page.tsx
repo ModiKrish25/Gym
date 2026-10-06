@@ -13,6 +13,7 @@ import { NutritionRecovery } from "@/components/sections/NutritionRecovery";
 import { Faq } from "@/components/sections/Faq";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { SectionReveal } from "@/components/motion/SectionReveal";
 
 export default function HomePage() {
   return (
@@ -21,46 +22,74 @@ export default function HomePage() {
       <Hero />
 
       {/* 2. Marquee ticker */}
-      <Marquee />
+      <SectionReveal>
+        <Marquee />
+      </SectionReveal>
 
       {/* 3. Programs */}
-      <Programs />
+      <SectionReveal>
+        <Programs />
+      </SectionReveal>
 
-      {/* 5. The GYM Method */}
-      <Method />
+      {/* 4. The GYM Method */}
+      <SectionReveal>
+        <Method />
+      </SectionReveal>
 
-      {/* 6. Trainers */}
-      <Trainers />
+      {/* 5. Trainers */}
+      <SectionReveal>
+        <Trainers />
+      </SectionReveal>
 
-      {/* 7. Facilities */}
-      <Facilities />
+      {/* 6. Facilities */}
+      <SectionReveal>
+        <Facilities />
+      </SectionReveal>
 
-      {/* 7a. Interactive Timber Hover-Reveal Zones */}
-      <FacilityZones />
+      {/* 7. Interactive Timber Hover-Reveal Zones */}
+      <SectionReveal>
+        <FacilityZones />
+      </SectionReveal>
 
       {/* 8. Class schedule */}
-      <Schedule />
+      <SectionReveal>
+        <Schedule />
+      </SectionReveal>
 
       {/* 9. Results */}
-      <Results />
+      <SectionReveal>
+        <Results />
+      </SectionReveal>
 
       {/* 10. Pricing */}
-      <Pricing />
+      <SectionReveal>
+        <Pricing />
+      </SectionReveal>
 
       {/* 11. Testimonials */}
-      <Testimonials />
+      <SectionReveal>
+        <Testimonials />
+      </SectionReveal>
 
       {/* 12. Nutrition & Recovery */}
-      <NutritionRecovery />
+      <SectionReveal>
+        <NutritionRecovery />
+      </SectionReveal>
 
       {/* 13. FAQ */}
-      <Faq />
+      <SectionReveal>
+        <Faq />
+      </SectionReveal>
 
       {/* 14. CTA banner */}
-      <CtaBanner />
+      <SectionReveal>
+        <CtaBanner />
+      </SectionReveal>
 
       {/* 15. Contact section */}
-      <ContactSection />
+      <SectionReveal>
+        <ContactSection />
+      </SectionReveal>
     </>
   );
 }

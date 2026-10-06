@@ -8,7 +8,6 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 
 import { HairlineGrid } from "@/components/layout/HairlineGrid";
 import { BarbellPreloader } from "@/components/motion/BarbellPreloader";
-import { BarbellSpine } from "@/components/motion/BarbellSpine";
 
 const displayFont = Big_Shoulders_Display({
   weight: ["800", "900"],
@@ -85,7 +84,6 @@ export default function RootLayout({
         <BarbellPreloader />
         <HairlineGrid />
         <SmoothScroll>
-          <BarbellSpine />
           <ScrollProgressBar />
           <Navbar />
           <div className="flex flex-col min-h-screen relative z-10">
