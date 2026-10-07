@@ -3,17 +3,37 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowRight, Dumbbell, ShieldCheck } from "lucide-react";
-import { useScrollDirection } from "@/hooks/useScrollDirection";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
+import { Menu, X, ArrowRight, Dumbbell } from "lucide-react";
 import { NAV_LINKS, BRAND } from "@/data/content";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
   const pathname = usePathname();
-  const { isScrolled, scrollDirection } = useScrollDirection();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Scroll tracking with smooth spring physics
+  const { scrollY } = useScroll();
+  const smoothScroll = useSpring(scrollY, {
+    stiffness: 180,
+    damping: 26,
+    mass: 0.5,
+  });
+
+  // Gradually decreases width as user scrolls down from Hero section
+  // At Hero (scrollY = 0): max-width 1440px / width 100%
+  // Scrolled down (scrollY >= 260): max-width 1060px / width 92%
+  const dockMaxWidth = useTransform(smoothScroll, [0, 260], ["1440px", "1060px"]);
+  const dockWidth = useTransform(smoothScroll, [0, 260], ["100%", "92%"]);
+  const dockTop = useTransform(smoothScroll, [0, 260], ["0.75rem", "1.25rem"]);
+
+  useEffect(() => {
+    return scrollY.on("change", (latest) => {
+      setIsScrolled(latest > 30);
+    });
+  }, [scrollY]);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -32,21 +52,20 @@ export function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Hide on scroll down, show on scroll up
-  const isHidden = scrollDirection === "down" && isScrolled && !mobileMenuOpen;
-
   return (
     <>
-      {/* Floating Architectural Header Dock */}
-      <header
-        className={cn(
-          "fixed top-3 sm:top-5 inset-x-0 z-50 px-3 sm:px-6 md:px-8 max-w-[1440px] mx-auto pointer-events-none transition-transform duration-500 [transition-timing-function:cubic-bezier(0.19,1,0.22,1)]",
-          isHidden ? "-translate-y-28" : "translate-y-0"
-        )}
+      {/* Floating Architectural Header Dock with gradual scroll width transition */}
+      <motion.header
+        style={{
+          width: dockWidth,
+          maxWidth: dockMaxWidth,
+          top: dockTop,
+        }}
+        className="fixed inset-x-0 z-50 mx-auto px-2 sm:px-4 pointer-events-none flex items-center justify-center will-change-[width,max-width,top]"
       >
         <div
           className={cn(
-            "pointer-events-auto rounded-[6px] transition-all duration-300 px-3.5 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between border shadow-2xl",
+            "w-full pointer-events-auto rounded-[6px] transition-all duration-300 px-3.5 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between border shadow-2xl",
             isScrolled
               ? "bg-[#0B0B0D]/95 border-[#D4FF3F]/25 backdrop-blur-2xl shadow-[0_16px_45px_rgba(0,0,0,0.9)]"
               : "bg-[#111215]/80 border-[rgba(237,235,228,0.12)] backdrop-blur-xl shadow-[0_12px_35px_rgba(0,0,0,0.65)]"
@@ -144,12 +163,6 @@ export function Navbar() {
 
           {/* Right: High-Impact Action & Mobile Toggle */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            {/* Calibrated Spec Badge (Tablet / Desktop) */}
-            <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-[2px] bg-[#17181B] border border-[rgba(237,235,228,0.08)] font-mono text-[10px] uppercase tracking-wider text-[#8A8F98]">
-              <ShieldCheck size={12} className="text-[#D4FF3F]" />
-              <span>IPF SPECS</span>
-            </div>
-
             {/* Redesigned Brutalist Join Button */}
             <Link
               href="/pricing"
@@ -176,7 +189,7 @@ export function Navbar() {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Full-screen Industrial Mobile Drawer */}
       <AnimatePresence>

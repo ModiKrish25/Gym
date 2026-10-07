@@ -21,7 +21,7 @@ const ZONES_DATA: ZoneCard[] = [
   {
     id: "free-weights",
     number: "01",
-    titleLines: ["FREE WEIGHTS"],
+    titleLines: ["FREE", "WEIGHTS"],
     subtitle: "Heavy Iron & Olympic Platforms",
     woodTexture: "/images/zones/wood-texture.jpg",
     revealImage: "/images/zones/free-weights.jpg",
@@ -33,7 +33,7 @@ const ZONES_DATA: ZoneCard[] = [
   {
     id: "locker-rooms",
     number: "02",
-    titleLines: ["LOCKER ROOMS"],
+    titleLines: ["LOCKER", "ROOMS"],
     subtitle: "Cedar Sanctuaries & Contrast Baths",
     woodTexture: "/images/zones/wood-texture.jpg",
     revealImage: "/images/zones/locker-rooms.jpg",
@@ -45,7 +45,7 @@ const ZONES_DATA: ZoneCard[] = [
   {
     id: "outdoor-workout",
     number: "03",
-    titleLines: ["OUTDOOR WORKOUT", "AREA"],
+    titleLines: ["OUTDOOR", "WORKOUT", "AREA"],
     subtitle: "Open-Air Sunlit Pit & Rigs",
     woodTexture: "/images/zones/wood-texture.jpg",
     revealImage: "/images/zones/outdoor-workout.jpg",
@@ -57,7 +57,7 @@ const ZONES_DATA: ZoneCard[] = [
   {
     id: "legends-mecca",
     number: "04",
-    titleLines: ["OLD SCHOOL", "IRON"],
+    titleLines: ["OLD", "SCHOOL", "IRON"],
     subtitle: "Venice Golden Era Heritage",
     woodTexture: "/images/zones/wood-texture.jpg",
     revealImage: "/images/zones/arnold-vintage.jpg",
@@ -168,11 +168,11 @@ export function FacilityZones() {
                   </div>
 
                   {/* CONTENT OVERLAY */}
-                  <div className="relative z-20 h-full flex flex-col justify-between p-4 sm:p-7 md:p-8">
+                  <div className="relative z-20 h-full flex flex-col justify-between p-4 sm:p-5 lg:p-6">
                     {/* TOP: Bold Condensed Uppercase Header */}
                     <div>
                       {/* Top Zone Indicator */}
-                      <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
                         <span
                           className={`font-mono text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded transition-colors duration-300 ${
                             isRevealed
@@ -192,16 +192,20 @@ export function FacilityZones() {
                         </span>
                       </div>
 
-                      {/* Main Title (Bebas Neue / Ultra Condensed uppercase) */}
+                      {/* Main Title (Condensed uppercase typography) */}
                       <h3
-                        className={`font-bebas text-4xl sm:text-5xl lg:text-6xl tracking-tight uppercase leading-[0.92] transition-colors duration-300 ${
+                        className={`font-display font-black tracking-tight uppercase leading-[0.88] transition-colors duration-300 ${
+                          zone.titleLines.length > 2
+                            ? "text-3xl sm:text-4xl lg:text-3xl xl:text-4xl"
+                            : "text-3xl sm:text-4xl lg:text-4xl xl:text-5xl"
+                        } ${
                           isRevealed
                             ? "text-[#FFFFFF] drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]"
                             : "text-[#050505]"
                         }`}
                       >
                         {zone.titleLines.map((line, idx) => (
-                          <span key={idx} className="block">
+                          <span key={idx} className="block whitespace-nowrap">
                             {line}
                           </span>
                         ))}

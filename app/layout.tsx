@@ -8,6 +8,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 
 import { HairlineGrid } from "@/components/layout/HairlineGrid";
 import { BarbellPreloader } from "@/components/motion/BarbellPreloader";
+import { PageTransition } from "@/components/motion/PageTransition";
 
 const displayFont = Big_Shoulders_Display({
   weight: ["800", "900"],
@@ -83,6 +84,7 @@ export default function RootLayout({
       <body className="font-body bg-[#0B0B0D] text-[#EDEBE4] min-h-screen selection:bg-[#D4FF3F] selection:text-[#0B0B0D] antialiased relative">
         <BarbellPreloader />
         <HairlineGrid />
+        <PageTransition />
         <SmoothScroll>
           <ScrollProgressBar />
           <Navbar />

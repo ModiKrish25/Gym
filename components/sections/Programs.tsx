@@ -16,7 +16,7 @@ export function Programs() {
       className="relative bg-[#0B0B0D] border-b border-[rgba(237,235,228,0.08)] overflow-hidden"
     >
       {/* Top Section Intro Bar */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 pt-20 md:pt-28 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[rgba(237,235,228,0.08)]">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 pt-10 md:pt-14 pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[rgba(237,235,228,0.08)]">
         <div>
           <div className="flex items-center gap-3 mb-3">
             <span className="w-2 h-2 rounded-[1px] bg-[#D4FF3F]" />

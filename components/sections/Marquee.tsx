@@ -73,12 +73,12 @@ export function Marquee() {
     <section
       id="marquee"
       aria-label="Athletic Marquee Tapes"
-      className="relative py-16 sm:py-24 md:py-36 overflow-hidden bg-[#0B0B0D] select-none flex items-center justify-center max-w-[100vw]"
+      className="relative pt-10 sm:pt-14 md:pt-16 pb-2 sm:pb-4 md:pb-4 overflow-hidden bg-[#0B0B0D] select-none flex items-center justify-center max-w-[100vw]"
     >
-      {/* Centered Symmetrical Cross Container: Both tapes share the exact same geometric origin */}
-      <div className="relative w-full h-[140px] sm:h-[180px] md:h-[220px] flex items-center justify-center">
-        {/* TAPE 2: Rotated +3deg from dead-center, Infinite scroll to RIGHT (-50% -> 0%), Iron Background */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[140vw] sm:w-[130vw] rotate-3 bg-[#17181B] text-[#EDEBE4] py-2.5 sm:py-3.5 md:py-4 shadow-[0_8px_30px_rgba(0,0,0,0.7)] overflow-hidden border-y border-[rgba(237,235,228,0.18)]">
+      {/* Centered Symmetrical Cross Container: Perfectly centered on all screen sizes */}
+      <div className="relative w-full h-[150px] sm:h-[160px] lg:h-[150px] flex items-center justify-center">
+        {/* TAPE 2: Back Iron Strip — Perfectly centered origin, 8deg on mobile, 6deg on tablet, 3deg on laptop */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[150vw] sm:w-[140vw] lg:w-[130vw] rotate-[8deg] sm:rotate-[6deg] lg:rotate-3 bg-[#17181B] text-[#EDEBE4] py-2 sm:py-2.5 lg:py-4 shadow-[0_8px_30px_rgba(0,0,0,0.7)] overflow-hidden border-y border-[rgba(237,235,228,0.18)]">
           <motion.div
             className="flex w-max will-change-transform"
             animate={{ x: ["-50%", "0%"] }}
@@ -124,8 +124,8 @@ export function Marquee() {
           </motion.div>
         </div>
 
-        {/* TAPE 1: Rotated -3deg from dead-center, Infinite scroll to LEFT (0% -> -50%), Volt Background */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[140vw] sm:w-[130vw] -rotate-3 bg-[#D4FF3F] text-[#0B0B0D] py-2.5 sm:py-3.5 md:py-4 shadow-[0_8px_30px_rgba(0,0,0,0.7)] overflow-hidden border-y border-[#D4FF3F]">
+        {/* TAPE 1: Front Volt Strip — Perfectly centered origin, -8deg on mobile, -6deg on tablet, -3deg on laptop */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-[150vw] sm:w-[140vw] lg:w-[130vw] -rotate-[8deg] sm:-rotate-[6deg] lg:-rotate-3 bg-[#D4FF3F] text-[#0B0B0D] py-2 sm:py-2.5 lg:py-4 shadow-[0_8px_30px_rgba(0,0,0,0.7)] overflow-hidden border-y border-[#D4FF3F]">
           <motion.div
             className="flex w-max will-change-transform"
             animate={{ x: ["0%", "-50%"] }}

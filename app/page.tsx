@@ -9,7 +9,6 @@ import { Schedule } from "@/components/sections/Schedule";
 import { Results } from "@/components/sections/Results";
 import { Pricing } from "@/components/sections/Pricing";
 import { Testimonials } from "@/components/sections/Testimonials";
-import { NutritionRecovery } from "@/components/sections/NutritionRecovery";
 import { Faq } from "@/components/sections/Faq";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -71,12 +70,7 @@ export default function HomePage() {
         <Testimonials />
       </SectionReveal>
 
-      {/* 12. Nutrition & Recovery */}
-      <SectionReveal>
-        <NutritionRecovery />
-      </SectionReveal>
-
-      {/* 13. FAQ */}
+      {/* 12. FAQ */}
       <SectionReveal>
         <Faq />
       </SectionReveal>

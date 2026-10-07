@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { BRAND } from "@/data/content";
 import { Instagram, Youtube, Twitter, ArrowRight, Check } from "lucide-react";
+import { RackItUp } from "./RackItUp";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -18,8 +19,12 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#0B0B0D] border-t border-[rgba(237,235,228,0.08)] pt-20 pb-12 text-[#8A8F98]">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
+    <footer className="bg-[#0B0B0D] border-t border-[rgba(237,235,228,0.08)] pt-12 md:pt-16 pb-12 text-[#8A8F98] relative overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+        {/* 1. FOOTER ANIMATION: RACK IT UP & OVERSIZED GYM WORDMARK */}
+        <RackItUp />
+
+        {/* 2. DIRECTORY, BRAND & DISPATCH GRID (Placed below RACK IT UP section) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand info */}
           <div className="lg:col-span-2">
@@ -30,7 +35,7 @@ export function Footer() {
               <span className="w-2 h-2 rounded-[1px] bg-[#D4FF3F] inline-block" />
             </Link>
             <p className="font-mono uppercase text-[11px] tracking-[0.2em] text-[#D4FF3F] mb-3">
-              &ldquo;One more rep // {BRAND.tagline}&rdquo;
+              &ldquo;ONE MORE REP // {BRAND.tagline.toUpperCase()}&rdquo;
             </p>
             <p className="text-sm max-w-sm leading-relaxed text-[#8A8F98] mb-6 font-body">
               A private training sanctuary built for serious progress. Data-backed
@@ -168,10 +173,10 @@ export function Footer() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 rounded-[2px] btn-volt text-xs flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 rounded-[2px] bg-[#D4FF3F] hover:bg-[#BEE62F] text-[#0B0B0D] font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(212,255,63,0.25)] hover:shadow-[0_0_25px_rgba(212,255,63,0.4)]"
                 >
                   <span>Subscribe</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={14} className="stroke-[2.5]" />
                 </button>
               </form>
             )}
@@ -188,6 +193,15 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Bottom faint hairline grid accent */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-24 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage: `linear-gradient(to right, #EDEBE4 1px, transparent 1px), linear-gradient(to bottom, #EDEBE4 1px, transparent 1px)`,
+          backgroundSize: "32px 32px",
+        }}
+      />
     </footer>
   );
 }
