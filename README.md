@@ -1,4 +1,4 @@
-# VYRA – Elite Fitness Club
+# GYM – Elite Fitness Club
 
 A high-performance, dark, cinematic, disciplined private fitness club website built with Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS, Framer Motion, Lenis, and GSAP ScrollTrigger.
 
