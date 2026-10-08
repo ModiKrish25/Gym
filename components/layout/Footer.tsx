@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { BRAND } from "@/data/content";
-import { Instagram, Youtube, Twitter, ArrowRight, Check } from "lucide-react";
+import { Instagram, Youtube, Twitter, Check } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import { RackItUp } from "./RackItUp";
 
 export function Footer() {
@@ -25,9 +26,9 @@ export function Footer() {
         <RackItUp />
 
         {/* 2. DIRECTORY, BRAND & DISPATCH GRID (Placed below RACK IT UP section) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-x-8 gap-y-12 sm:gap-10 lg:gap-12 mb-16">
           {/* Brand info */}
-          <div className="lg:col-span-2">
+          <div className="col-span-2 md:col-span-2 lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2 mb-4 group">
               <span className="font-display text-4xl font-extrabold uppercase text-[#EDEBE4] group-hover:text-[#D4FF3F] tracking-tight transition-colors">
                 {BRAND.name}
@@ -75,7 +76,7 @@ export function Footer() {
           </div>
 
           {/* Explore column */}
-          <div>
+          <div className="col-span-1">
             <h4 className="font-mono text-xs uppercase font-bold tracking-widest text-[#EDEBE4] mb-5">
               Explore
             </h4>
@@ -109,7 +110,7 @@ export function Footer() {
           </div>
 
           {/* Support column */}
-          <div>
+          <div className="col-span-1">
             <h4 className="font-mono text-xs uppercase font-bold tracking-widest text-[#EDEBE4] mb-5">
               Support
             </h4>
@@ -147,7 +148,7 @@ export function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div className="lg:col-span-1">
+          <div className="col-span-2 md:col-span-2 lg:col-span-1">
             <h4 className="font-mono text-xs uppercase font-bold tracking-widest text-[#EDEBE4] mb-3">
               The Dispatch
             </h4>
@@ -173,10 +174,10 @@ export function Footer() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 rounded-[2px] bg-[#D4FF3F] hover:bg-[#BEE62F] text-[#0B0B0D] font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(212,255,63,0.25)] hover:shadow-[0_0_25px_rgba(212,255,63,0.4)]"
+                  className="group w-full py-2.5 px-4 rounded-[2px] bg-[#D4FF3F] hover:bg-[#BEE62F] text-[#0B0B0D] font-mono text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(212,255,63,0.25)] hover:shadow-[0_0_25px_rgba(212,255,63,0.4)]"
                 >
                   <span>Subscribe</span>
-                  <ArrowRight size={14} className="stroke-[2.5]" />
+                  <AnimatedArrow type="right" size={14} />
                 </button>
               </form>
             )}

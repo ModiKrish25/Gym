@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Eye, Sparkles, Compass, ArrowUpRight, Check } from "lucide-react";
+import { Eye, Sparkles, Compass, Check } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 interface ZoneCard {
   id: string;
@@ -77,7 +78,7 @@ export function FacilityZones() {
   return (
     <section
       id="zones"
-      className="py-20 md:py-32 bg-[#05080F] border-b border-[rgba(142,155,176,0.18)] relative overflow-hidden"
+      className="py-14 sm:py-16 md:py-20 bg-[#05080F] border-b border-[rgba(142,155,176,0.18)] relative overflow-hidden"
     >
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -250,7 +251,11 @@ export function FacilityZones() {
                             <Compass size={13} className="text-black" />
                             <span>Hover to reveal</span>
                           </span>
-                          <ArrowUpRight size={15} className="text-black" />
+                          <AnimatedArrow
+                            type="up-right"
+                            size={15}
+                            iconClassName="text-black"
+                          />
                         </div>
                       )}
                     </div>

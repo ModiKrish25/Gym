@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function CtaBanner() {
@@ -44,10 +44,10 @@ export function CtaBanner() {
 
           {/* Right: CTA Action Button */}
           <div className="shrink-0 flex flex-col items-stretch sm:items-start lg:items-end gap-2.5 w-full lg:w-auto">
-            <Link href="/contact" className="w-full sm:w-auto">
+            <Link href="/contact" className="w-full sm:w-auto group">
               <MagneticButton variant="volt" className="text-xs sm:text-sm px-6 sm:px-8 py-3.5 w-full sm:w-auto text-center justify-center">
                 <span>Book a free trial</span>
-                <ArrowRight size={16} />
+                <AnimatedArrow type="right" size={16} />
               </MagneticButton>
             </Link>
             <span className="font-mono text-[10px] uppercase tracking-wider text-[#8A8F98] text-center sm:text-left">

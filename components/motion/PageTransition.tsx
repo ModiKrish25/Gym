@@ -343,12 +343,14 @@ export function PageTransition() {
 
           {/* Left Plate: Bone/Chalk — rolls in from left (-100vw), meets in center, rolls out */}
           <motion.div
-            className="absolute top-1/2 -translate-y-1/2 w-[min(85vw,520px)] h-[min(85vw,520px)] sm:w-[min(70vw,600px)] sm:h-[min(70vw,600px)] flex items-center justify-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
-            initial={{ x: "-110vw", rotate: -360 }}
+            className="absolute top-1/2 w-[min(80vw,min(70vh,460px))] h-[min(80vw,min(70vh,460px))] sm:w-[min(60vw,min(72vh,520px))] sm:h-[min(60vw,min(72vh,520px))] flex items-center justify-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+            style={{ y: "-50%" }}
+            initial={{ x: "-110vw", y: "-50%", rotate: -360 }}
             animate={
               phase === "in" || phase === "hold"
                 ? {
-                    x: "-14vw",
+                    x: "-12vw",
+                    y: "-50%",
                     rotate: 0,
                     transition: {
                       duration: 0.4,
@@ -358,13 +360,14 @@ export function PageTransition() {
                 : phase === "out"
                 ? {
                     x: "-120vw",
+                    y: "-50%",
                     rotate: -360,
                     transition: {
                       duration: 0.4,
                       ease: [0.4, 0, 0.2, 1],
                     },
                   }
-                : {}
+                : { y: "-50%" }
             }
           >
             <OlympicPlate color="bone" className="w-full h-full" />
@@ -372,12 +375,14 @@ export function PageTransition() {
 
           {/* Right Plate: Lime/Volt — rolls in from right (100vw), meets in center, rolls out */}
           <motion.div
-            className="absolute top-1/2 -translate-y-1/2 w-[min(85vw,520px)] h-[min(85vw,520px)] sm:w-[min(70vw,600px)] sm:h-[min(70vw,600px)] flex items-center justify-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
-            initial={{ x: "110vw", rotate: 360 }}
+            className="absolute top-1/2 w-[min(80vw,min(70vh,460px))] h-[min(80vw,min(70vh,460px))] sm:w-[min(60vw,min(72vh,520px))] sm:h-[min(60vw,min(72vh,520px))] flex items-center justify-center drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)]"
+            style={{ y: "-50%" }}
+            initial={{ x: "110vw", y: "-50%", rotate: 360 }}
             animate={
               phase === "in" || phase === "hold"
                 ? {
-                    x: "14vw",
+                    x: "12vw",
+                    y: "-50%",
                     rotate: 0,
                     transition: {
                       duration: 0.4,
@@ -387,13 +392,14 @@ export function PageTransition() {
                 : phase === "out"
                 ? {
                     x: "120vw",
+                    y: "-50%",
                     rotate: 360,
                     transition: {
                       duration: 0.4,
                       ease: [0.4, 0, 0.2, 1],
                     },
                   }
-                : {}
+                : { y: "-50%" }
             }
           >
             <OlympicPlate color="lime" className="w-full h-full" />

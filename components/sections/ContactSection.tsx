@@ -6,6 +6,24 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Check, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { contactFormSchema, ContactFormData } from "@/lib/validators";
 import { BRAND } from "@/data/content";
+import { CustomSelect } from "@/components/ui/CustomSelect";
+
+const INTEREST_OPTIONS = [
+  "Strength Training",
+  "Fat Loss Lab",
+  "Functional Fitness",
+  "Yoga & Mobility",
+  "HIIT Ignite",
+  "Personal Coaching",
+];
+
+const PREFERRED_TIME_OPTIONS = [
+  "Early Morning (05:00 - 07:00)",
+  "Morning (07:00 - 11:00)",
+  "Afternoon (12:00 - 16:00)",
+  "Evening (17:00 - 21:00)",
+  "Late Evening (21:00 - 23:00)",
+];
 
 export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,10 +34,20 @@ export function ContactSection() {
     register,
     handleSubmit,
     reset,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      interest: "Strength Training",
+      preferredTime: "Morning (07:00 - 11:00)",
+    },
   });
+
+  const selectedInterest = watch("interest") || "Strength Training";
+  const selectedPreferredTime =
+    watch("preferredTime") || "Morning (07:00 - 11:00)";
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -53,7 +81,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-36 bg-[#0A1220] border-b border-[rgba(142,155,176,0.18)]"
+      className="py-14 sm:py-16 md:py-20 bg-[#0A1220] border-b border-[rgba(142,155,176,0.18)]"
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
@@ -240,18 +268,15 @@ export function ContactSection() {
                     <label className="block text-xs uppercase tracking-wider text-[#8E9BB0] font-semibold mb-2">
                       Interested In *
                     </label>
-                    <select
-                      {...register("interest")}
-                      defaultValue="Strength Training"
-                      className="w-full px-4 py-3 rounded-2xl bg-[#0A1220] border border-[rgba(142,155,176,0.2)] text-sm text-[#F5F6F8] focus:border-[#FF6B35] focus:outline-none transition-colors"
-                    >
-                      <option value="Strength Training">Strength Training</option>
-                      <option value="Fat Loss Lab">Fat Loss Lab</option>
-                      <option value="Functional Fitness">Functional Fitness</option>
-                      <option value="Yoga & Mobility">Yoga & Mobility</option>
-                      <option value="HIIT Ignite">HIIT Ignite</option>
-                      <option value="Personal Coaching">Personal Coaching</option>
-                    </select>
+                    <input type="hidden" {...register("interest")} />
+                    <CustomSelect
+                      value={selectedInterest}
+                      onChange={(val) =>
+                        setValue("interest", val as any, { shouldValidate: true })
+                      }
+                      options={INTEREST_OPTIONS}
+                      hasError={!!errors.interest}
+                    />
                     {errors.interest && (
                       <p className="text-xs text-[#FF6B35] mt-1.5 font-medium">
                         {errors.interest.message}
@@ -265,27 +290,15 @@ export function ContactSection() {
                   <label className="block text-xs uppercase tracking-wider text-[#8E9BB0] font-semibold mb-2">
                     Preferred Training Window *
                   </label>
-                  <select
-                    {...register("preferredTime")}
-                    defaultValue="Morning (06:00 - 10:00)"
-                    className="w-full px-4 py-3 rounded-2xl bg-[#0A1220] border border-[rgba(142,155,176,0.2)] text-sm text-[#F5F6F8] focus:border-[#FF6B35] focus:outline-none transition-colors"
-                  >
-                    <option value="Early Morning (05:00 - 07:00)">
-                      Early Morning (05:00 - 07:00)
-                    </option>
-                    <option value="Morning (07:00 - 11:00)">
-                      Morning (07:00 - 11:00)
-                    </option>
-                    <option value="Afternoon (12:00 - 16:00)">
-                      Afternoon (12:00 - 16:00)
-                    </option>
-                    <option value="Evening (17:00 - 21:00)">
-                      Evening (17:00 - 21:00)
-                    </option>
-                    <option value="Late Evening (21:00 - 23:00)">
-                      Late Evening (21:00 - 23:00)
-                    </option>
-                  </select>
+                  <input type="hidden" {...register("preferredTime")} />
+                  <CustomSelect
+                    value={selectedPreferredTime}
+                    onChange={(val) =>
+                      setValue("preferredTime", val, { shouldValidate: true })
+                    }
+                    options={PREFERRED_TIME_OPTIONS}
+                    hasError={!!errors.preferredTime}
+                  />
                   {errors.preferredTime && (
                     <p className="text-xs text-[#FF6B35] mt-1.5 font-medium">
                       {errors.preferredTime.message}

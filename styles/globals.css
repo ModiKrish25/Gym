@@ -309,4 +309,18 @@
   animation-play-state: paused;
 }
 
+/* Bulletproof modal open state: hide navbar and freeze background scroll */
+body.modal-open header {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-24px) !important;
+  transition: opacity 0.25s cubic-bezier(0.19, 1, 0.22, 1), transform 0.25s cubic-bezier(0.19, 1, 0.22, 1) !important;
+}
+
+body.modal-open,
+html.modal-open {
+  overflow: hidden !important;
+  overscroll-behavior: none !important;
+}
+
 

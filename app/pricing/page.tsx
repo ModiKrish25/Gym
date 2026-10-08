@@ -37,52 +37,54 @@ const COMPARISON_FEATURES = [
   },
 ];
 
+import React from "react";
+
 export default function PricingPage() {
   return (
-    <div className="pt-28 sm:pt-36 pb-20 sm:pb-24 md:pb-36 bg-[#0A1220] min-h-screen">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-24 md:pb-36 bg-[#0B0B0D] text-[#EDEBE4] min-h-screen">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Main Pricing component */}
         <Pricing />
 
         {/* Feature Comparison Table */}
-        <section className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t border-[rgba(142,155,176,0.18)]">
+        <section className="mt-16 sm:mt-20 pt-12 sm:pt-16 border-t border-[rgba(237,235,228,0.08)]">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-            <span className="text-xs uppercase tracking-widest text-[#FF6B35] font-semibold mb-2 sm:mb-3 block">
-              Direct Comparison
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#D4FF3F] font-semibold mb-2 sm:mb-3 block">
+              DIRECT COMPARISON // METRIC AUDIT
             </span>
-            <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[#F5F6F8]">
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold uppercase text-[#EDEBE4] tracking-tight">
               Feature Comparison Matrix
             </h2>
-            <p className="text-sm text-[#8E9BB0] mt-3">
+            <p className="font-body text-sm text-[#8A8F98] mt-3">
               Review what is included in each membership tier side-by-side.
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl sm:rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.2)] p-4 sm:p-8">
+          <div className="overflow-x-auto rounded-[4px] bg-[#17181B] border border-[rgba(237,235,228,0.1)] p-4 sm:p-8">
             <table className="w-full text-left border-collapse min-w-[640px]">
               <thead>
-                <tr className="border-b border-[rgba(142,155,176,0.18)]">
-                  <th className="py-4 px-4 font-heading text-lg text-[#F5F6F8] w-2/5">
-                    Feature
+                <tr className="border-b border-[rgba(237,235,228,0.12)]">
+                  <th className="py-4 px-4 font-mono text-xs uppercase tracking-wider text-[#8A8F98] w-2/5">
+                    Deliverable / Feature
                   </th>
-                  <th className="py-4 px-4 font-heading text-lg text-[#F5F6F8] text-center w-1/5">
+                  <th className="py-4 px-4 font-mono text-xs uppercase tracking-wider text-[#EDEBE4] text-center w-1/5">
                     Essential
                   </th>
-                  <th className="py-4 px-4 font-heading text-lg text-[#FF6B35] text-center w-1/5">
-                    Performance
+                  <th className="py-4 px-4 font-mono text-xs uppercase tracking-wider text-[#D4FF3F] font-bold text-center w-1/5">
+                    Performance ★
                   </th>
-                  <th className="py-4 px-4 font-heading text-lg text-[#FFB38A] text-center w-1/5">
+                  <th className="py-4 px-4 font-mono text-xs uppercase tracking-wider text-[#EDEBE4] text-center w-1/5">
                     Elite
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {COMPARISON_FEATURES.map((section) => (
-                  <div key={section.category} className="contents">
+                  <React.Fragment key={section.category}>
                     <tr>
                       <td
                         colSpan={4}
-                        className="pt-6 pb-3 px-4 text-xs uppercase tracking-wider font-bold text-[#FF6B35] bg-[#0A1220]/50"
+                        className="pt-6 pb-3 px-4 font-mono text-[11px] uppercase tracking-wider font-bold text-[#D4FF3F] bg-[#0B0B0D]/80 border-b border-[rgba(237,235,228,0.06)]"
                       >
                         {section.category}
                       </td>
@@ -90,39 +92,39 @@ export default function PricingPage() {
                     {section.items.map((item, idx) => (
                       <tr
                         key={idx}
-                        className="border-b border-[rgba(142,155,176,0.1)] hover:bg-[#0A1220]/30 transition-colors"
+                        className="border-b border-[rgba(237,235,228,0.06)] hover:bg-[#0B0B0D]/40 transition-colors"
                       >
-                        <td className="py-3.5 px-4 text-sm text-[#F5F6F8]">
+                        <td className="py-3.5 px-4 text-xs sm:text-sm font-body text-[#EDEBE4]">
                           {item.name}
                         </td>
-                        <td className="py-3.5 px-4 text-xs text-center text-[#8E9BB0]">
+                        <td className="py-3.5 px-4 font-mono text-xs text-center text-[#8A8F98]">
                           {typeof item.essential === "boolean" ? (
                             item.essential ? (
-                              <Check size={16} className="text-[#FF6B35] mx-auto" />
+                              <Check size={16} className="text-[#D4FF3F] mx-auto" />
                             ) : (
-                              <Minus size={16} className="text-[#8E9BB0]/40 mx-auto" />
+                              <Minus size={16} className="text-[#8A8F98]/30 mx-auto" />
                             )
                           ) : (
                             item.essential
                           )}
                         </td>
-                        <td className="py-3.5 px-4 text-xs text-center font-medium text-[#F5F6F8]">
+                        <td className="py-3.5 px-4 font-mono text-xs text-center font-medium text-[#EDEBE4]">
                           {typeof item.performance === "boolean" ? (
                             item.performance ? (
-                              <Check size={16} className="text-[#FF6B35] mx-auto" />
+                              <Check size={16} className="text-[#D4FF3F] mx-auto" />
                             ) : (
-                              <Minus size={16} className="text-[#8E9BB0]/40 mx-auto" />
+                              <Minus size={16} className="text-[#8A8F98]/30 mx-auto" />
                             )
                           ) : (
                             item.performance
                           )}
                         </td>
-                        <td className="py-3.5 px-4 text-xs text-center font-medium text-[#FFB38A]">
+                        <td className="py-3.5 px-4 font-mono text-xs text-center font-medium text-[#EDEBE4]">
                           {typeof item.elite === "boolean" ? (
                             item.elite ? (
-                              <Check size={16} className="text-[#FF6B35] mx-auto" />
+                              <Check size={16} className="text-[#D4FF3F] mx-auto" />
                             ) : (
-                              <Minus size={16} className="text-[#8E9BB0]/40 mx-auto" />
+                              <Minus size={16} className="text-[#8A8F98]/30 mx-auto" />
                             )
                           ) : (
                             item.elite
@@ -130,7 +132,7 @@ export default function PricingPage() {
                         </td>
                       </tr>
                     ))}
-                  </div>
+                  </React.Fragment>
                 ))}
               </tbody>
             </table>

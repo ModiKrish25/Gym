@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, Dumbbell, Flame, Activity, Zap } from "lucide-react";
+import { Clock, Dumbbell, Flame, Activity, Zap } from "lucide-react";
 import { KettlebellIcon, PowerCageIcon } from "@/components/ui/GymIcons";
 import { PROGRAMS } from "@/data/content";
+import { AnimatedArrow, AnimatedArrowBox } from "@/components/ui/AnimatedArrow";
 
 export function Programs() {
   // Duplicate programs list once for mathematically seamless 0 -> -50% CSS looping
@@ -29,14 +30,19 @@ export function Programs() {
           </h2>
         </div>
 
-        <div className="flex items-center gap-6 font-mono text-xs text-[#8A8F98]">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6 font-mono text-xs text-[#8A8F98]">
           <span className="inline-flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#D4FF3F] animate-pulse" />
             <span className="text-[#EDEBE4] tracking-wider uppercase">CONTINUOUS ROTATION</span>
           </span>
-          <span className="hidden sm:inline-block text-[#8A8F98] uppercase tracking-wider">
-            HOVER TO PAUSE
-          </span>
+
+          <Link
+            href="/programs"
+            className="group inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-[#17181B] border border-[rgba(237,235,228,0.12)] hover:border-[#D4FF3F] hover:text-[#D4FF3F] text-[#EDEBE4] uppercase font-bold tracking-wider transition-colors"
+          >
+            <span>Explore All 6 Programs</span>
+            <AnimatedArrow type="right" size={13} />
+          </Link>
         </div>
       </div>
 
@@ -50,9 +56,10 @@ export function Programs() {
           {duplicatedPrograms.map((program, idx) => {
             const originalIndex = (idx % PROGRAMS.length) + 1;
             return (
-              <div
+              <Link
                 key={`${program.id}-${idx}`}
-                className="w-[82vw] sm:w-[420px] md:w-[460px] lg:w-[480px] max-w-[480px] shrink-0 rounded-[4px] bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[#D4FF3F] transition-all duration-500 flex flex-col overflow-hidden group select-none shadow-xl"
+                href={`/programs#${program.id}`}
+                className="w-[82vw] sm:w-[420px] md:w-[460px] lg:w-[480px] max-w-[480px] shrink-0 rounded-[4px] bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[#D4FF3F] transition-all duration-500 flex flex-col overflow-hidden group select-none shadow-xl cursor-pointer block"
               >
                 {/* Image Header with B&W high-contrast filter that turns to color on hover */}
                 <div className="relative h-52 sm:h-64 md:h-72 w-full overflow-hidden border-b border-[rgba(237,235,228,0.08)]">
@@ -121,16 +128,14 @@ export function Programs() {
                       ))}
                     </div>
 
-                    <Link
-                      href={`/classes#${program.id}`}
-                      className="w-9 h-9 rounded-[2px] bg-[#0B0B0D] border border-[rgba(237,235,228,0.12)] flex items-center justify-center text-[#EDEBE4] group-hover:bg-[#D4FF3F] group-hover:text-[#0B0B0D] group-hover:border-[#D4FF3F] transition-all shrink-0 ml-2"
-                      aria-label={`View ${program.title} syllabus`}
-                    >
-                      <ArrowRight size={15} />
-                    </Link>
+                    <AnimatedArrowBox
+                      type="right"
+                      size={15}
+                      className="w-9 h-9 ml-2"
+                    />
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -138,3 +143,5 @@ export function Programs() {
     </section>
   );
 }
+
+export default Programs;

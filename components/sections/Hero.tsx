@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { LetterSwap } from "@/components/ui/LetterSwap";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -179,10 +180,8 @@ export function Hero() {
               className="group relative inline-flex items-center justify-center gap-3 overflow-hidden bg-[#D4FF3F] px-6 sm:px-7 py-3.5 sm:py-4 text-[#0B0B0D] text-center"
             >
               <span className="absolute inset-0 translate-y-full bg-[#EDEBE4] transition-transform duration-500 ease-out group-hover:translate-y-0" />
-              <span className="relative">Start your free trial</span>
-              <span className="relative" aria-hidden>
-                →
-              </span>
+              <span className="relative z-10">Start your free trial</span>
+              <AnimatedArrow type="right" size={15} className="relative z-10" />
             </a>
             <a
               href="/classes"
@@ -200,17 +199,23 @@ export function Hero() {
             <div
               key={s.l}
               className={`py-3 sm:py-5 ${
-                i > 0 ? "md:border-l md:border-white/15 md:pl-8" : ""
+                i > 0 ? "md:border-l md:border-white/15 md:pl-4 lg:pl-8" : ""
               } ${i % 2 === 1 ? "pl-4 sm:pl-6 border-l border-white/10 md:border-l-0" : "pr-2"}`}
             >
               <div
-                className={`${display} text-3xl sm:text-4xl md:text-6xl leading-none tabular-nums`}
+                className={`${display} flex items-baseline whitespace-nowrap text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-none tabular-nums`}
                 style={{ fontFamily: displayFont }}
               >
                 <span className="count" data-n={s.n}>
                   {s.n.toLocaleString("en-US")}
                 </span>
-                <span className="text-[#D4FF3F]">{s.s}</span>
+                {s.s.trim() === "+" ? (
+                  <span className="text-[#D4FF3F]">{s.s.trim()}</span>
+                ) : (
+                  <span className="text-[#D4FF3F] text-base sm:text-lg md:text-xl lg:text-2xl font-bold ml-1.5 tracking-normal">
+                    {s.s.trim()}
+                  </span>
+                )}
               </div>
               <div className={`mt-1.5 sm:mt-2 text-[#EDEBE4]/60 ${label}`}>{s.l}</div>
             </div>

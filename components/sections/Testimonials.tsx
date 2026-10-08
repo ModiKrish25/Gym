@@ -111,7 +111,7 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-20 md:py-28 bg-[#0B0B0D] border-b border-[rgba(237,235,228,0.08)] relative overflow-hidden w-full"
+      className="py-14 sm:py-16 md:py-20 bg-[#0B0B0D] border-b border-[rgba(237,235,228,0.08)] relative overflow-hidden w-full"
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 mb-10 md:mb-14">
         {/* Section Header */}
@@ -126,12 +126,6 @@ export function Testimonials() {
             <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight">
               Athlete Verified
             </h2>
-          </div>
-
-          <div className="font-mono text-xs text-[#8A8F98] uppercase tracking-wider flex items-center gap-4">
-            <span>FULL SPECTRUM EVIDENCE</span>
-            <span>&bull;</span>
-            <span className="text-[#D4FF3F]">HOVER TO PAUSE</span>
           </div>
         </div>
       </div>

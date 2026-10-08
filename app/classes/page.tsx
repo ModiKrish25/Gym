@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Clock, User, Filter } from "lucide-react";
+import { Clock, User, Filter, Zap } from "lucide-react";
 import { SCHEDULE, DAYS_OF_WEEK, DayOfWeek, ScheduleClass, Intensity } from "@/data/schedule";
 import { BookModal } from "@/components/ui/BookModal";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 
 export default function ClassesPage() {
   const [selectedDay, setSelectedDay] = useState<string>("All");
@@ -34,36 +35,39 @@ export default function ClassesPage() {
   };
 
   return (
-    <div className="pt-28 sm:pt-36 pb-20 sm:pb-24 md:pb-36 bg-[#0A1220] min-h-screen">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8">
+    <div className="pt-28 sm:pt-36 pb-20 sm:pb-24 md:pb-36 bg-[#0B0B0D] text-[#EDEBE4] min-h-screen">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Header */}
-        <div className="max-w-2xl mb-8 sm:mb-12">
-          <span className="text-xs uppercase tracking-widest text-[#FF6B35] font-semibold mb-2 sm:mb-3 block">
-            Class Directory
-          </span>
-          <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl font-bold text-[#F5F6F8] mb-3 sm:mb-4">
-            Curated Group Sessions
+        <div className="mb-10 sm:mb-14 border-b border-[rgba(237,235,228,0.08)] pb-8 sm:pb-12">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="w-2 h-2 rounded-[1px] bg-[#D4FF3F]" />
+            <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#D4FF3F]">
+              TIMETABLE // GROUP ROSTER
+            </span>
+          </div>
+          <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase text-[#EDEBE4] leading-[0.88] tracking-tight mb-4">
+            Class Schedule
           </h1>
-          <p className="text-sm sm:text-base text-[#8E9BB0] leading-relaxed">
-            High-density coaching with small squad capacities. Filter by day or intensity
-            to find your training cadence.
+          <p className="font-body text-base text-[#8A8F98] max-w-2xl leading-relaxed">
+            High-density coaching with small squad capacities capped at 14 athletes.
+            Filter by day or training intensity to calibrate your weekly schedule.
           </p>
         </div>
 
-        {/* Filter Toolbar */}
-        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.18)] mb-8 sm:mb-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6">
-          {/* Day Filter */}
-          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
-            <span className="text-xs font-semibold text-[#8E9BB0] uppercase tracking-wider flex items-center gap-1.5 mr-2 shrink-0">
-              <Filter size={14} className="text-[#FF6B35]" />
-              <span>Day:</span>
+        {/* Filter Toolbar (Clean 2-tier on laptop/tablet, single-row on xl) */}
+        <div className="p-4 sm:p-5 rounded-[4px] bg-[#17181B] border border-[rgba(237,235,228,0.1)] mb-8 sm:mb-10 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-4 sm:gap-5">
+          {/* Day Filter Strip */}
+          <div className="flex items-center gap-2 overflow-x-auto w-full xl:w-auto pb-1 xl:pb-0 no-scrollbar">
+            <span className="font-mono text-xs font-bold text-[#D4FF3F] uppercase tracking-widest flex items-center gap-1.5 mr-2 shrink-0">
+              <Filter size={13} />
+              <span>DAY:</span>
             </span>
             <button
               onClick={() => setSelectedDay("All")}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold shrink-0 transition-colors ${
+              className={`px-3.5 py-1.5 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider shrink-0 transition-all duration-200 ${
                 selectedDay === "All"
-                  ? "bg-[#FF6B35] text-[#0A1220]"
-                  : "bg-[#0A1220] text-[#8E9BB0] hover:text-[#F5F6F8]"
+                  ? "bg-[#D4FF3F] text-[#0B0B0D] shadow-[0_0_12px_rgba(212,255,63,0.3)]"
+                  : "bg-[#0B0B0D] text-[#8A8F98] border border-[rgba(237,235,228,0.1)] hover:text-[#EDEBE4] hover:border-[#EDEBE4]/40"
               }`}
             >
               All Days
@@ -72,10 +76,10 @@ export default function ClassesPage() {
               <button
                 key={d.key}
                 onClick={() => setSelectedDay(d.key)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold shrink-0 transition-colors ${
+                className={`px-3.5 py-1.5 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider shrink-0 transition-all duration-200 ${
                   selectedDay === d.key
-                    ? "bg-[#FF6B35] text-[#0A1220]"
-                    : "bg-[#0A1220] text-[#8E9BB0] hover:text-[#F5F6F8]"
+                    ? "bg-[#D4FF3F] text-[#0B0B0D] shadow-[0_0_12px_rgba(212,255,63,0.3)]"
+                    : "bg-[#0B0B0D] text-[#8A8F98] border border-[rgba(237,235,228,0.1)] hover:text-[#EDEBE4] hover:border-[#EDEBE4]/40"
                 }`}
               >
                 {d.label}
@@ -83,19 +87,20 @@ export default function ClassesPage() {
             ))}
           </div>
 
-          {/* Intensity Filter */}
-          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <span className="text-xs font-semibold text-[#8E9BB0] uppercase tracking-wider mr-1 sm:mr-2">
-              Intensity:
+          {/* Intensity Filter Strip (Never wraps messily into 2 stacked lines) */}
+          <div className="flex items-center gap-2 overflow-x-auto w-full xl:w-auto pt-3 xl:pt-0 border-t border-[rgba(237,235,228,0.06)] xl:border-t-0 shrink-0 no-scrollbar">
+            <span className="font-mono text-xs font-bold text-[#8A8F98] uppercase tracking-widest mr-2 shrink-0 flex items-center gap-1.5">
+              <Zap size={13} className="text-[#D4FF3F]" />
+              <span>INTENSITY:</span>
             </span>
             {["All", "Low", "Medium", "High"].map((level) => (
               <button
                 key={level}
                 onClick={() => setSelectedIntensity(level)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                className={`px-3.5 py-1.5 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider shrink-0 transition-all duration-200 ${
                   selectedIntensity === level
-                    ? "bg-[#FF6B35] text-[#0A1220]"
-                    : "bg-[#0A1220] text-[#8E9BB0] hover:text-[#F5F6F8]"
+                    ? "bg-[#D4FF3F] text-[#0B0B0D] shadow-[0_0_12px_rgba(212,255,63,0.3)]"
+                    : "bg-[#0B0B0D] text-[#8A8F98] border border-[rgba(237,235,228,0.1)] hover:text-[#EDEBE4] hover:border-[#EDEBE4]/40"
                 }`}
               >
                 {level}
@@ -105,19 +110,19 @@ export default function ClassesPage() {
         </div>
 
         {/* Results Counter */}
-        <div className="flex items-center justify-between text-xs text-[#8E9BB0] mb-6">
+        <div className="flex items-center justify-between font-mono text-xs text-[#8A8F98] mb-6">
           <span>
-            Showing <strong className="text-[#F5F6F8]">{filteredClasses.length}</strong> sessions
+            SHOWING <strong className="text-[#D4FF3F] font-bold">{filteredClasses.length}</strong> SESSIONS
           </span>
           {filteredClasses.length === 0 && (
-            <span>Try adjusting your filters above</span>
+            <span className="text-[#D4FF3F]">No classes found matching filters</span>
           )}
         </div>
 
         {/* Grid of Classes */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
         >
           <AnimatePresence>
             {filteredClasses.map((cls) => {
@@ -127,51 +132,56 @@ export default function ClassesPage() {
                 <motion.div
                   key={`${cls.dayKey}-${cls.id}`}
                   layout
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-[#121C30] border border-[rgba(142,155,176,0.18)] hover:border-[#FF6B35]/40 transition-all flex flex-col justify-between group"
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.25 }}
+                  className="p-5 sm:p-7 rounded-[4px] bg-[#17181B] border border-[rgba(237,235,228,0.08)] hover:border-[#D4FF3F] transition-all duration-300 flex flex-col justify-between group shadow-lg"
                 >
                   <div>
+                    {/* Top Badges */}
                     <div className="flex items-center justify-between gap-3 mb-4">
-                      <span className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#0A1220] text-[#FFB38A] border border-[rgba(142,155,176,0.2)]">
+                      <span className="font-mono text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-[2px] bg-[#0B0B0D] text-[#EDEBE4] border border-[rgba(237,235,228,0.12)]">
                         {cls.dayFull}
                       </span>
                       <span
-                        className={`text-xs font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
+                        className={`font-mono text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-[2px] border ${
                           isHigh
-                            ? "bg-[#FF6B35]/20 text-[#FF6B35] border border-[#FF6B35]/40"
-                            : "bg-[#0A1220] text-[#8E9BB0] border border-[rgba(142,155,176,0.25)]"
+                            ? "bg-[#D4FF3F]/10 text-[#D4FF3F] border-[#D4FF3F]/30"
+                            : "bg-[#0B0B0D] text-[#8A8F98] border-[rgba(237,235,228,0.1)]"
                         }`}
                       >
                         {cls.intensity}
                       </span>
                     </div>
 
-                    <h3 className="font-heading text-2xl font-bold text-[#F5F6F8] mb-2 group-hover:text-[#FF6B35] transition-colors">
+                    {/* Class Name */}
+                    <h3 className="font-display text-2xl sm:text-3xl font-extrabold uppercase text-[#EDEBE4] mb-3 group-hover:text-[#D4FF3F] transition-colors">
                       {cls.name}
                     </h3>
 
-                    <div className="space-y-1.5 text-xs text-[#8E9BB0] mb-6">
+                    {/* Time & Trainer Metadata */}
+                    <div className="space-y-2 font-mono text-xs text-[#8A8F98] mb-6">
                       <div className="flex items-center gap-2">
-                        <Clock size={14} className="text-[#FF6B35]" />
+                        <Clock size={13} className="text-[#D4FF3F]" />
                         <span>
-                          {cls.time} ({cls.duration})
+                          {cls.time} HRS &bull; {cls.duration}
                         </span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <User size={14} className="text-[#FFB38A]" />
-                        <span>Coach: {cls.trainer}</span>
+                        <User size={13} className="text-[#EDEBE4]" />
+                        <span>COACH: {cls.trainer}</span>
                       </div>
                     </div>
                   </div>
 
+                  {/* Booking CTA Button */}
                   <button
                     onClick={() => handleBook(cls)}
-                    className="w-full py-3 rounded-full border border-[#F5F6F8]/30 text-xs font-bold uppercase tracking-wider text-[#F5F6F8] hover:bg-[#FF6B35] hover:text-[#0A1220] hover:border-[#FF6B35] transition-all"
+                    className="w-full py-3 rounded-[2px] bg-[#0B0B0D] border border-[rgba(237,235,228,0.15)] text-xs font-mono font-bold uppercase tracking-wider text-[#EDEBE4] group-hover:bg-[#D4FF3F] group-hover:text-[#0B0B0D] group-hover:border-[#D4FF3F] transition-all duration-300 flex items-center justify-center gap-2"
                   >
-                    Reserve Spot
+                    <span>Reserve Spot</span>
+                    <AnimatedArrow type="up-right" size={14} />
                   </button>
                 </motion.div>
               );

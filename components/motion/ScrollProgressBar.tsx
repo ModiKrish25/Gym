@@ -25,7 +25,7 @@ export function ScrollProgressBar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 h-7 z-[99] pointer-events-none select-none overflow-x-clip"
+      className="fixed top-0 left-0 right-0 h-3.5 z-30 pointer-events-none select-none overflow-x-clip"
       aria-hidden="true"
     >
       {/* Barbell sleeve track */}
@@ -44,19 +44,19 @@ export function ScrollProgressBar() {
       >
         <motion.div
           style={{ rotate: plateRotation }}
-          className="w-5 h-5 rounded-full bg-[#17181B] border-2 border-[#D4FF3F] shadow-[0_0_12px_rgba(212,255,63,0.6)] flex items-center justify-center relative"
+          className="w-3.5 h-3.5 rounded-full bg-[#17181B] border-2 border-[#D4FF3F] shadow-[0_0_10px_rgba(212,255,63,0.7)] flex items-center justify-center relative"
         >
           {/* Inner ring */}
-          <div className="w-2.5 h-2.5 rounded-full border border-[rgba(237,235,228,0.4)] flex items-center justify-center">
+          <div className="w-1.5 h-1.5 rounded-full border border-[rgba(237,235,228,0.4)] flex items-center justify-center">
             {/* Center collar hole */}
-            <div className="w-1 h-1 rounded-full bg-[#D4FF3F]" />
+            <div className="w-0.5 h-0.5 rounded-full bg-[#D4FF3F]" />
           </div>
 
           {/* Radial knurl notches that demonstrate rolling */}
-          <span className="absolute top-0 w-[1.5px] h-1 bg-[#D4FF3F]" />
-          <span className="absolute bottom-0 w-[1.5px] h-1 bg-[#D4FF3F]" />
-          <span className="absolute left-0 h-[1.5px] w-1 bg-[#D4FF3F]" />
-          <span className="absolute right-0 h-[1.5px] w-1 bg-[#D4FF3F]" />
+          <span className="absolute top-0 w-[1px] h-0.5 bg-[#D4FF3F]" />
+          <span className="absolute bottom-0 w-[1px] h-0.5 bg-[#D4FF3F]" />
+          <span className="absolute left-0 h-[1px] w-0.5 bg-[#D4FF3F]" />
+          <span className="absolute right-0 h-[1px] w-0.5 bg-[#D4FF3F]" />
         </motion.div>
       </motion.div>
     </div>

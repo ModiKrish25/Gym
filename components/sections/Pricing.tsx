@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, Sparkles, ArrowRight } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
+import { AnimatedArrow } from "@/components/ui/AnimatedArrow";
 import { PLANS, PRICING_FOOTNOTE } from "@/data/plans";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 
@@ -117,12 +118,12 @@ function BarbellPlateStack({ platesCount, isPopular }: { platesCount: number; is
 }
 
 export function Pricing() {
-  const [isYearly, setIsYearly] = useState(false);
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "quarterly" | "annual">("monthly");
 
   return (
     <section
       id="pricing"
-      className="py-24 md:py-36 bg-[#0B0B0D] border-b border-[rgba(237,235,228,0.08)]"
+      className="py-14 sm:py-16 md:py-20 bg-[#0B0B0D] border-b border-[rgba(237,235,228,0.08)]"
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
@@ -139,12 +140,12 @@ export function Pricing() {
             </h2>
           </div>
 
-          {/* Monthly / Yearly Toggle (Sharp corners, hairline borders) */}
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 p-1 rounded-[2px] bg-[#17181B] border border-[rgba(237,235,228,0.12)]">
+          {/* Monthly / Quarterly / Annual Toggle */}
+          <div className="inline-flex items-center gap-1 sm:gap-1.5 p-1 rounded-[2px] bg-[#17181B] border border-[rgba(237,235,228,0.12)]">
             <button
-              onClick={() => setIsYearly(false)}
-              className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 ${
-                !isYearly
+              onClick={() => setBillingCycle("monthly")}
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 ${
+                billingCycle === "monthly"
                   ? "bg-[#D4FF3F] text-[#0B0B0D]"
                   : "text-[#8A8F98] hover:text-[#EDEBE4]"
               }`}
@@ -152,26 +153,58 @@ export function Pricing() {
               Monthly
             </button>
             <button
-              onClick={() => setIsYearly(true)}
-              className={`px-4 sm:px-5 py-1.5 sm:py-2 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 flex items-center gap-1.5 sm:gap-2 ${
-                isYearly
+              onClick={() => setBillingCycle("quarterly")}
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 flex items-center gap-1.5 ${
+                billingCycle === "quarterly"
+                  ? "bg-[#D4FF3F] text-[#0B0B0D]"
+                  : "text-[#8A8F98] hover:text-[#EDEBE4]"
+              }`}
+            >
+              <span>Quarterly</span>
+              <span className={`px-1.5 py-0.5 rounded-[1px] text-[9px] font-mono ${
+                billingCycle === "quarterly"
+                  ? "bg-[#0B0B0D] text-[#D4FF3F]"
+                  : "bg-[#0B0B0D] text-[#D4FF3F]"
+              }`}>
+                -10%
+              </span>
+            </button>
+            <button
+              onClick={() => setBillingCycle("annual")}
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-200 flex items-center gap-1.5 ${
+                billingCycle === "annual"
                   ? "bg-[#D4FF3F] text-[#0B0B0D]"
                   : "text-[#8A8F98] hover:text-[#EDEBE4]"
               }`}
             >
               <span>Annual</span>
-              <span className="px-1.5 py-0.5 rounded-[1px] text-[9px] bg-[#0B0B0D] text-[#D4FF3F] font-mono">
+              <span className={`px-1.5 py-0.5 rounded-[1px] text-[9px] font-mono ${
+                billingCycle === "annual"
+                  ? "bg-[#0B0B0D] text-[#D4FF3F]"
+                  : "bg-[#0B0B0D] text-[#D4FF3F]"
+              }`}>
                 -20%
               </span>
             </button>
           </div>
         </div>
 
-        {/* 3 Plate Stack Cards Grid (Sharp corners 4-8px radius, hairline 1px grid) */}
+        {/* 3 Plate Stack Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch mb-12">
           {PLANS.map((plan, idx) => {
-            const price = isYearly ? plan.yearlyPrice : plan.monthlyPrice;
-            const cadence = isYearly ? "/yr" : "/mo";
+            let price = plan.monthlyPrice;
+            let cadence = "/mo";
+            let effectivePerMonth = "";
+
+            if (billingCycle === "quarterly") {
+              price = plan.quarterlyPrice;
+              cadence = "/qtr";
+              effectivePerMonth = `₹${Math.round(plan.quarterlyPrice / 3).toLocaleString()}/mo`;
+            } else if (billingCycle === "annual") {
+              price = plan.yearlyPrice;
+              cadence = "/yr";
+              effectivePerMonth = `₹${Math.round(plan.yearlyPrice / 12).toLocaleString()}/mo`;
+            }
             // Map plan to plate count: Essential = 1, Performance = 2, Elite = 3
             const plateCount = idx + 1;
 
@@ -211,6 +244,11 @@ export function Pricing() {
                       </span>
                       <span className="font-mono text-xs text-[#8A8F98]">{cadence}</span>
                     </div>
+                    {effectivePerMonth && (
+                      <span className="font-mono text-[10px] text-[#D4FF3F] mt-1 block">
+                        Equates to {effectivePerMonth}
+                      </span>
+                    )}
                   </div>
 
                   {/* Feature list */}
@@ -228,7 +266,7 @@ export function Pricing() {
 
                 {/* CTA Button */}
                 <div className="pt-6 border-t border-[rgba(237,235,228,0.08)]">
-                  <Link href={`/contact?plan=${plan.id}`} className="w-full block">
+                  <Link href={`/contact?plan=${plan.id}&cycle=${billingCycle}`} className="w-full block group">
                     <button
                       className={`w-full py-3.5 px-6 rounded-[2px] font-mono text-xs uppercase font-bold tracking-wider transition-all duration-300 flex items-center justify-center gap-2 ${
                         plan.popular
@@ -237,7 +275,7 @@ export function Pricing() {
                       }`}
                     >
                       <span>Select Tier</span>
-                      <ArrowRight size={14} />
+                      <AnimatedArrow type="right" size={14} />
                     </button>
                   </Link>
                 </div>

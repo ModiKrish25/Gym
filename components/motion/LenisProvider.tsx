@@ -30,6 +30,13 @@ export default function LenisProvider({ children }: LenisProviderProps) {
         wheelMultiplier: 0.9,
       });
 
+      (window as any).lenis = lenisInstance;
+
+      const handleStop = () => lenisInstance?.stop();
+      const handleStart = () => lenisInstance?.start();
+      window.addEventListener("lenis:stop", handleStop);
+      window.addEventListener("lenis:start", handleStart);
+
       function raf(time: number) {
         lenisInstance?.raf(time);
         rafId = requestAnimationFrame(raf);
@@ -40,7 +47,10 @@ export default function LenisProvider({ children }: LenisProviderProps) {
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
-      if (lenisInstance) lenisInstance.destroy();
+      if (lenisInstance) {
+        lenisInstance.destroy();
+        delete (window as any).lenis;
+      }
     };
   }, []);
 

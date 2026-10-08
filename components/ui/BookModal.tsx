@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -21,8 +22,13 @@ export function BookModal({
   selectedClass,
   dayLabel,
 }: BookModalProps) {
+  const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const {
     register,
@@ -42,17 +48,32 @@ export function BookModal({
     }
   }, [selectedClass, dayLabel, setValue]);
 
-  // Lock body scroll
+  // Lock body & Lenis scroll
   useEffect(() => {
     if (isOpen) {
+      document.documentElement.classList.add("modal-open");
+      document.body.classList.add("modal-open");
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
+      window.dispatchEvent(new CustomEvent("lenis:stop"));
+      (window as any).lenis?.stop();
       setIsSuccess(false);
     } else {
+      document.documentElement.classList.remove("modal-open");
+      document.body.classList.remove("modal-open");
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
+      window.dispatchEvent(new CustomEvent("lenis:start"));
+      (window as any).lenis?.start();
       reset();
     }
     return () => {
+      document.documentElement.classList.remove("modal-open");
+      document.body.classList.remove("modal-open");
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
+      window.dispatchEvent(new CustomEvent("lenis:start"));
+      (window as any).lenis?.start();
     };
   }, [isOpen, reset]);
 
@@ -73,10 +94,16 @@ export function BookModal({
     setIsSuccess(true);
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div
+          data-lenis-prevent
+          onWheel={(e) => e.stopPropagation()}
+          className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto overscroll-contain"
+        >
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -227,6 +254,7 @@ export function BookModal({
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

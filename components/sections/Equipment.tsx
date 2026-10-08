@@ -21,7 +21,7 @@ export function Equipment() {
   return (
     <section
       id="equipment"
-      className="py-24 md:py-36 bg-[#0B0B0D] border-b border-[rgba(237,235,228,0.08)] relative overflow-hidden"
+      className="py-14 sm:py-16 md:py-20 bg-[#0B0B0D] border-b border-[rgba(237,235,228,0.08)] relative overflow-hidden"
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}

@@ -15,7 +15,7 @@ export function Faq() {
   return (
     <section
       id="faq"
-      className="py-24 md:py-36 bg-[#0A1220] border-b border-[rgba(142,155,176,0.18)]"
+      className="py-14 sm:py-16 md:py-20 bg-[#0A1220] border-b border-[rgba(142,155,176,0.18)]"
     >
       <div className="max-w-[900px] mx-auto px-4 sm:px-6 md:px-8">
         <div className="text-center mb-12 sm:mb-16">

@@ -2,6 +2,7 @@ export interface Plan {
   id: string;
   name: string;
   monthlyPrice: number;
+  quarterlyPrice: number;
   yearlyPrice: number;
   popular?: boolean;
   features: string[];
@@ -13,6 +14,7 @@ export const PLANS: Plan[] = [
     id: "essential",
     name: "Essential",
     monthlyPrice: 2499,
+    quarterlyPrice: 6749,
     yearlyPrice: 23990,
     features: [
       "Gym floor access",
@@ -27,6 +29,7 @@ export const PLANS: Plan[] = [
     id: "performance",
     name: "Performance",
     monthlyPrice: 4499,
+    quarterlyPrice: 12149,
     yearlyPrice: 43190,
     popular: true,
     features: [
@@ -43,6 +46,7 @@ export const PLANS: Plan[] = [
     id: "elite",
     name: "Elite",
     monthlyPrice: 7999,
+    quarterlyPrice: 21599,
     yearlyPrice: 76790,
     features: [
       "Everything in Performance",
